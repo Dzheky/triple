@@ -7,6 +7,7 @@ const metrics = {
   marginHorizontal: 10,
   marginVertical: 10,
   section: 40,
+  buttonHeight: 55,
   baseMargin: 10,
   doubleBaseMargin: 20,
   smallMargin: 5,
