@@ -17,7 +17,7 @@ export default StyleSheet.create({
     position: 'absolute',
     zIndex: 100,
     backgroundColor: Colors.transparent,
-    right: Metrics.baseMargin*2,
+    right: Metrics.baseMargin * 2,
     top: 4
   }
 })

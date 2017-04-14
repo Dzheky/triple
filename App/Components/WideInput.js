@@ -20,8 +20,8 @@ export default class WideInput extends React.Component {
     password: false
   }
 
-  componentDidMount() {
-    if(this.props.password) {
+  componentDidMount () {
+    if (this.props.password) {
       this.setState({
         password: true
       })

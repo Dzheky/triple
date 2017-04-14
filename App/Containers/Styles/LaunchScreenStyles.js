@@ -16,12 +16,12 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: Metrics.baseMargin,
-    marginBottom: Metrics.baseMargin*2
+    marginBottom: Metrics.baseMargin * 2
   },
   loginButton: {
     margin: Metrics.baseMargin
   },
-  loginText: {
+  unfocusedButtonText: {
     backgroundColor: Colors.transparent,
     paddingHorizontal: 5,
     color: Colors.grey,
@@ -32,19 +32,18 @@ export default StyleSheet.create({
   registrationUnderline: {
     height: 13,
     backgroundColor: 'white',
-    marginTop: -15,
+    marginTop: -15
   },
-  registrationText: {
+  focusedButtonText: {
     backgroundColor: Colors.transparent,
     color: 'black',
     paddingHorizontal: 5,
     fontSize: Fonts.size.h4,
     fontWeight: '800',
-    backgroundColor: Colors.transparent,
     zIndex: 1
   },
   registrationButton: {
-    margin: Metrics.baseMargin,
+    margin: Metrics.baseMargin
   },
   containerBackground: {
     backgroundColor: Colors.yellow
