@@ -86,6 +86,9 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
+  handleForgotenPress = () => {
+  }
+
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
@@ -133,6 +136,12 @@ export default class LaunchScreen extends React.Component {
             </Swiper>
           </View>
         </View>
+        <TouchableOpacity
+          style={Styles.passwordResetContainer}
+          onPress={this.handleForgotenPress}
+        >
+          <Text style={Styles.passwordResetText}>Забыли пароль?</Text>
+        </TouchableOpacity>
       </View>
     )
   }

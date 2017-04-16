@@ -29,6 +29,14 @@ export default StyleSheet.create({
     fontWeight: '800',
     zIndex: 1
   },
+  passwordResetText: {
+    color: 'black'
+  },
+  passwordResetContainer: {
+    backgroundColor: Colors.transparent,
+    position: 'absolute',
+    bottom: 45
+  },
   registrationUnderline: {
     height: 13,
     backgroundColor: 'white',
