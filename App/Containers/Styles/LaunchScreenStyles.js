@@ -32,6 +32,13 @@ export default StyleSheet.create({
   passwordResetText: {
     color: 'black'
   },
+  passwordResetTitle: {
+    textAlign: 'center',
+    color: 'black',
+    fontSize: Fonts.size.h4,
+    fontWeight: '800',
+    marginBottom: Metrics.baseMargin * 3
+  },
   passwordResetContainer: {
     backgroundColor: Colors.transparent,
     position: 'absolute',

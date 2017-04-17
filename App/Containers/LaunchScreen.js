@@ -3,7 +3,10 @@ import {
   View,
   TouchableOpacity,
   Text,
-  Image
+  Image,
+  Keyboard,
+  Platform,
+  Modal
 } from 'react-native'
 import { Images } from '../Themes'
 import WideInput from '../Components/WideInput'
@@ -17,7 +20,34 @@ export default class LaunchScreen extends React.Component {
   state = {
     eMail: 'Hello world',
     current: 'login',
-    scrolling: false
+    scrolling: false,
+    keyboardUp: false,
+    forgottenVisible: false
+  }
+  componentWillMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide)
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
+  }
+
+  _keyboardDidShow = () => {
+    if (Platform.OS === 'android') {
+      this.setState({
+        keyboardUp: true
+      })
+    }
+  }
+
+  _keyboardDidHide = () => {
+    if (Platform.OS === 'android') {
+      this.setState({
+        keyboardUp: false
+      })
+    }
   }
 
   onEmailChange = (text) => {
@@ -57,6 +87,18 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
+  handleForgotenPress = () => {
+    this.setState({
+      forgottenVisible: true
+    })
+  }
+
+  handleCloseForgotten = () => {
+    this.setState({
+      forgottenVisible: false
+    })
+  }
+
   handleSwipe = (e, state) => {
     let current
     switch (state.index) {
@@ -86,13 +128,45 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
-  handleForgotenPress = () => {
+  renderButtonForgotten = () => {
+    return (
+      <TouchableOpacity
+        style={Styles.passwordResetContainer}
+        onPress={this.handleForgotenPress}
+      >
+        <Text style={Styles.passwordResetText}>Забыли пароль?</Text>
+      </TouchableOpacity>
+    )
   }
 
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
-        <Image source={Images.logo} style={Styles.logo} />
+        <Modal
+          animationType={'fade'}
+          transparent={false}
+          visible={this.state.forgottenVisible}
+          onRequestClose={() => {
+            this.setState({
+              forgottenVisible: false
+            })
+          }}
+        >
+          <View style={[Styles.mainContainer, Styles.containerBackground]}>
+            <View>
+              <Text style={Styles.passwordResetTitle}>ЗАБЫЛИ ПАРОЛЬ?</Text>
+              <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
+              <WideButton text={'ВОЙТИ'} onPress={() => {}} style={{marginTop: 10}} />
+            </View>
+            {!this.state.keyboardUp ? <TouchableOpacity
+              style={Styles.passwordResetContainer}
+              onPress={this.handleCloseForgotten}
+            >
+              <Text style={Styles.passwordResetText}>✕ О, Вспомнил!</Text>
+            </TouchableOpacity> : null }
+          </View>
+        </Modal>
+        {this.state.keyboardUp ? null : <Image source={Images.logo} style={Styles.logo} />}
         <View style={Styles.section} >
           <View style={Styles.topButtonsContainer}>
             <TouchableOpacity
@@ -136,12 +210,7 @@ export default class LaunchScreen extends React.Component {
             </Swiper>
           </View>
         </View>
-        <TouchableOpacity
-          style={Styles.passwordResetContainer}
-          onPress={this.handleForgotenPress}
-        >
-          <Text style={Styles.passwordResetText}>Забыли пароль?</Text>
-        </TouchableOpacity>
+        {!this.state.keyboardUp && this.state.current === 'login' ? this.renderButtonForgotten() : null}
       </View>
     )
   }
