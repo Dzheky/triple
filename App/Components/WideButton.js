@@ -1,7 +1,8 @@
 'use strict'
 import React, { PropTypes } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Text, ActivityIndicator } from 'react-native'
 import Styles from './Styles/WideButtonStyles'
+import { Colors } from '../Themes/'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
 
 // Example
@@ -16,6 +17,7 @@ export default class WideButton extends React.Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
+    waiting: PropTypes.bool,
     style: PropTypes.object,
     fontStyle: PropTypes.object,
     transparent: PropTypes.bool
@@ -27,7 +29,9 @@ export default class WideButton extends React.Component {
         onPress={this.props.onPress}
         style={[this.props.transparent ? Styles.containerTransparent : Styles.container, this.props.style]}
       >
-        <Text style={[this.props.transparent ? Styles.transparentText : Styles.text, this.props.fontStyle]}>{this.props.text}</Text>
+        {!this.props.waiting?
+          <Text style={[this.props.transparent ? Styles.transparentText : Styles.text, this.props.fontStyle]}>{this.props.text}</Text>:
+          <ActivityIndicator color={ Colors.yellow }/>}
       </TouchableOpacity>
     )
   }

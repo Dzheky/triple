@@ -11,6 +11,7 @@ import {
 import { Images } from '../Themes'
 import WideInput from '../Components/WideInput'
 import WideButton from '../Components/WideButton'
+import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
 
 // Styles
@@ -18,11 +19,14 @@ import Styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends React.Component {
   state = {
-    eMail: 'Hello world',
+    eMail: '',
+    password: '',
     current: 'login',
     scrolling: false,
     keyboardUp: false,
-    forgottenVisible: false
+    forgottenVisible: false,
+    loginWaiting: false,
+    registrationWaiting: false
   }
   componentWillMount () {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
@@ -56,6 +60,12 @@ export default class LaunchScreen extends React.Component {
     })
   }
 
+  onPasswordChange = (text) => {
+    this.setState({
+      password: text
+    })
+  }
+
   setScrolling = () => {
     this.setState({
       scrolling: true
@@ -67,14 +77,29 @@ export default class LaunchScreen extends React.Component {
     }, 500)
   }
 
+  handleLogin = () => {
+    this.setState({
+      loginWaiting: true
+    })
+    this.error.showError('Не правильный Email или пароль!')
+  }
+
   handleLoginPress = () => {
     if (this.state.current === 'registration' && !this.state.scrolling) {
       this.setScrolling()
       this.swiper.scrollBy(-1, true)
       this.setState({
-        current: 'login'
+        current: 'login',
+        eMail: '',
+        password: '',
       })
     }
+  }
+
+  handleRegistration = () => {
+    this.setState({
+      registrationWaiting: true
+    })
   }
 
   handleRegistrationPress = () => {
@@ -82,7 +107,9 @@ export default class LaunchScreen extends React.Component {
       this.setScrolling()
       this.swiper.scrollBy(1, true)
       this.setState({
-        current: 'registration'
+        current: 'registration',
+        eMail: '',
+        password: ''
       })
     }
   }
@@ -142,6 +169,7 @@ export default class LaunchScreen extends React.Component {
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
+        <TopError ref={ref => this.error = ref} />
         <Modal
           animationType={'fade'}
           transparent={false}
@@ -197,14 +225,14 @@ export default class LaunchScreen extends React.Component {
             >
               <View>
                 <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
-                <WideInput placeholder={'пароль'} onChangeText={this.onEmailChange} password />
-                <WideButton text={'ВОЙТИ'} onPress={() => {}} style={{marginTop: 10}} />
+                <WideInput placeholder={'пароль'} onChangeText={this.onPasswordChange} password />
+                <WideButton waiting={this.state.loginWaiting} text={'ВОЙТИ'} onPress={this.handleLogin} style={{marginTop: 10}} />
                 <WideButton text={'Войти через Facebook'} onPress={() => {}} transparent />
               </View>
               <View>
                 <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
-                <WideInput placeholder={'пароль'} onChangeText={this.onEmailChange} password />
-                <WideButton text={'ЗАРЕГИСТРИРОВАТЬСЯ'} onPress={() => {}} style={{marginTop: 10}} />
+                <WideInput placeholder={'пароль'} onChangeText={this.onPasswordChange} password />
+                <WideButton waiting={this.state.registrationWaiting} text={'ЗАРЕГИСТРИРОВАТЬСЯ'} onPress={this.handleRegistration} style={{marginTop: 10}} />
                 <WideButton text={'Зарегистрироваться через Facebook'} onPress={() => {}} transparent />
               </View>
             </Swiper>
