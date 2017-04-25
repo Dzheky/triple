@@ -17,5 +17,5 @@ export default StyleSheet.create({
     opacity: 1,
     fontFamily: Fonts.type.bold,
     fontSize: Fonts.size.small
-  },
+  }
 })

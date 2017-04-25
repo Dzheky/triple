@@ -29,9 +29,9 @@ export default class WideButton extends React.Component {
         onPress={this.props.onPress}
         style={[this.props.transparent ? Styles.containerTransparent : Styles.container, this.props.style]}
       >
-        {!this.props.waiting?
-          <Text style={[this.props.transparent ? Styles.transparentText : Styles.text, this.props.fontStyle]}>{this.props.text}</Text>:
-          <ActivityIndicator color={ Colors.yellow }/>}
+        { !this.props.waiting
+          ? <Text style={[this.props.transparent ? Styles.transparentText : Styles.text, this.props.fontStyle]}>{this.props.text}</Text>
+          : <ActivityIndicator color={Colors.yellow} /> }
       </TouchableOpacity>
     )
   }

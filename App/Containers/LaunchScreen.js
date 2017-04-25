@@ -13,6 +13,7 @@ import WideInput from '../Components/WideInput'
 import WideButton from '../Components/WideButton'
 import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
+import key from '../../apiKeys'
 
 // Styles
 import Styles from './Styles/LaunchScreenStyles'
@@ -54,6 +55,46 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
+  login = async () => {
+    try {
+      const url = 'https://dzheky.eu.auth0.com/oauth/ro'
+      let data = {
+        client_id: key.auth0clientId,
+        username: this.state.eMail,
+        password: this.state.password,
+        connection: 'Triple',
+        grant_type: 'password'
+      }
+      console.log(JSON.stringify(data))
+      let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let response = await fetch(url, fetchData)
+      response = await response.json()
+      this.setState({
+        loginWaiting: false
+      }, () => {
+        if (response.access_token) {
+          this.error.showError('Вы вошли как ' + this.state.eMail + '!')
+        } else if (response.error_description === 'Wrong email or password.') {
+          this.error.showError('Неправильный email или пароль!')
+        } else {
+          this.error.showError('Что-то пошло не так')
+        }
+      })
+    } catch (error) {
+      this.setState({
+        loginWaiting: false
+      }, () => {
+        this.error.showError('Что-то пошло не так')
+      })
+    }
+  }
+
   onEmailChange = (text) => {
     this.setState({
       eMail: text
@@ -78,10 +119,10 @@ export default class LaunchScreen extends React.Component {
   }
 
   handleLogin = () => {
+    this.login()
     this.setState({
       loginWaiting: true
     })
-    this.error.showError('Не правильный Email или пароль!')
   }
 
   handleLoginPress = () => {
@@ -91,7 +132,7 @@ export default class LaunchScreen extends React.Component {
       this.setState({
         current: 'login',
         eMail: '',
-        password: '',
+        password: ''
       })
     }
   }
@@ -169,7 +210,7 @@ export default class LaunchScreen extends React.Component {
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
-        <TopError ref={ref => this.error = ref} />
+        <TopError ref={ref => { this.error = ref }} />
         <Modal
           animationType={'fade'}
           transparent={false}
