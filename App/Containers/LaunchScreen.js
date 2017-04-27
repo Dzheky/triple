@@ -14,6 +14,7 @@ import WideButton from '../Components/WideButton'
 import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
 import key from '../../apiKeys'
+import { Actions } from 'react-native-router-flux'
 
 // Styles
 import Styles from './Styles/LaunchScreenStyles'
@@ -79,8 +80,10 @@ export default class LaunchScreen extends React.Component {
       this.setState({
         loginWaiting: false
       }, () => {
+        console.log(response)
         if (response.access_token) {
           this.error.showError('Вы вошли как ' + this.state.eMail + '!')
+          Actions.mainScreen()
         } else if (response.error_description === 'Wrong email or password.') {
           this.error.showError('Неправильный email или пароль!')
         } else {
@@ -91,6 +94,7 @@ export default class LaunchScreen extends React.Component {
       this.setState({
         loginWaiting: false
       }, () => {
+        console.log(error)
         this.error.showError('Что-то пошло не так')
       })
     }
