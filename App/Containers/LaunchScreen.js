@@ -21,13 +21,15 @@ import Styles from './Styles/LaunchScreenStyles'
 export default class LaunchScreen extends React.Component {
   state = {
     eMail: '',
+    forgottenEmail: '',
     password: '',
     current: 'login',
     scrolling: false,
     keyboardUp: false,
     forgottenVisible: false,
     loginWaiting: false,
-    registrationWaiting: false
+    registrationWaiting: false,
+    resetPasswordWaiting: false
   }
   componentWillMount () {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
@@ -65,7 +67,6 @@ export default class LaunchScreen extends React.Component {
         connection: 'Triple',
         grant_type: 'password'
       }
-      console.log(JSON.stringify(data))
       let fetchData = {
         method: 'POST',
         body: JSON.stringify(data),
@@ -95,9 +96,98 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
+  handleResetPassword = () => {
+    Keyboard.dismiss()
+    this.resetPassword()
+    this.setState({
+      resetPasswordWaiting: true
+    })
+  }
+
+  resetPassword = async () => {
+    try {
+      const url = 'https://dzheky.eu.auth0.com/dbconnections/change_password'
+      let data = {
+        client_id: key.auth0clientId,
+        email: this.state.forgottenEmail,
+        connection: 'Triple'
+      }
+      let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let response = await fetch(url, fetchData)
+      response = await response.json()
+      this.setState({
+        resetPasswordWaiting: false
+      }, () => {
+        if (response === "We've just sent you an email to reset your password.") {
+          this.modalError.showError('Мы отправили вам email для восстановления пароля!')
+        } else if (response.error === 'email or username are required.') {
+          this.modalError.showError('Введите ваш email!')
+        } else {
+          this.modalError.showError('Что-то пошло не так')
+        }
+      })
+    } catch (error) {
+      this.setState({
+        resetPasswordWaiting: false
+      }, () => {
+        this.error.showError('Что-то пошло не так')
+      })
+    }
+  }
+
+  registration = async () => {
+    try {
+      const url = 'https://dzheky.eu.auth0.com/dbconnections/signup'
+      let data = {
+        client_id: key.auth0clientId,
+        email: this.state.eMail,
+        password: this.state.password,
+        connection: 'Triple'
+      }
+      let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let response = await fetch(url, fetchData)
+      response = await response.json()
+      this.setState({
+        registrationWaiting: false
+      }, () => {
+        if (response._id) {
+          this.login()
+        } else if (response.description === 'The user already exists.') {
+          this.error.showError('Пользователь с таким email уже существует!')
+        } else {
+          this.error.showError('Что-то пошло не так')
+        }
+      })
+    } catch (error) {
+      this.setState({
+        registrationWaiting: false
+      }, () => {
+        this.error.showError('Что-то пошло не так')
+      })
+    }
+  }
+
   onEmailChange = (text) => {
     this.setState({
       eMail: text
+    })
+  }
+
+  onForgotEmailChange = (text) => {
+    this.setState({
+      forgottenEmail: text
     })
   }
 
@@ -119,6 +209,7 @@ export default class LaunchScreen extends React.Component {
   }
 
   handleLogin = () => {
+    Keyboard.dismiss()
     this.login()
     this.setState({
       loginWaiting: true
@@ -138,6 +229,8 @@ export default class LaunchScreen extends React.Component {
   }
 
   handleRegistration = () => {
+    Keyboard.dismiss()
+    this.registration()
     this.setState({
       registrationWaiting: true
     })
@@ -210,7 +303,6 @@ export default class LaunchScreen extends React.Component {
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
-        <TopError ref={ref => { this.error = ref }} />
         <Modal
           animationType={'fade'}
           transparent={false}
@@ -222,10 +314,11 @@ export default class LaunchScreen extends React.Component {
           }}
         >
           <View style={[Styles.mainContainer, Styles.containerBackground]}>
+            <TopError ref={ref => { this.modalError = ref }} />
             <View>
               <Text style={Styles.passwordResetTitle}>ЗАБЫЛИ ПАРОЛЬ?</Text>
-              <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
-              <WideButton text={'ВОЙТИ'} onPress={() => {}} style={{marginTop: 10}} />
+              <WideInput placeholder={'e-mail'} onChangeText={this.onForgotEmailChange} />
+              <WideButton waiting={this.state.resetPasswordWaiting} text={'ВСПОМНИТЬ'} onPress={this.handleResetPassword} style={{marginTop: 10}} />
             </View>
             {!this.state.keyboardUp ? <TouchableOpacity
               style={Styles.passwordResetContainer}
@@ -235,7 +328,8 @@ export default class LaunchScreen extends React.Component {
             </TouchableOpacity> : null }
           </View>
         </Modal>
-        {this.state.keyboardUp ? null : <Image source={Images.logo} style={Styles.logo} />}
+        <Image source={Images.logo} style={[Styles.logo, { opacity: this.state.keyboardUp ? 0 : 1 }]} />
+        <TopError ref={ref => { this.error = ref }} />
         <View style={Styles.section} >
           <View style={Styles.topButtonsContainer}>
             <TouchableOpacity
