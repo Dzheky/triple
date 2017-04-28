@@ -6,15 +6,16 @@ import {
   Image,
   Keyboard,
   Platform,
-  Modal
+  Modal,
+  StatusBar
 } from 'react-native'
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes'
 import WideInput from '../Components/WideInput'
 import WideButton from '../Components/WideButton'
 import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
 import key from '../../apiKeys'
-import { Actions } from 'react-native-router-flux'
+import { Actions, ActionConst } from 'react-native-router-flux'
 
 // Styles
 import Styles from './Styles/LaunchScreenStyles'
@@ -82,8 +83,7 @@ export default class LaunchScreen extends React.Component {
       }, () => {
         console.log(response)
         if (response.access_token) {
-          this.error.showError('Вы вошли как ' + this.state.eMail + '!')
-          Actions.mainScreen()
+          Actions.mainScreen({type: ActionConst.RESET})
         } else if (response.error_description === 'Wrong email or password.') {
           this.error.showError('Неправильный email или пароль!')
         } else {
@@ -307,6 +307,10 @@ export default class LaunchScreen extends React.Component {
   render () {
     return (
       <View style={[Styles.mainContainer, Styles.containerBackground]}>
+        <StatusBar
+          backgroundColor={Colors.yellow}
+          barStyle='dark-content'
+        />
         <Modal
           animationType={'fade'}
           transparent={false}
