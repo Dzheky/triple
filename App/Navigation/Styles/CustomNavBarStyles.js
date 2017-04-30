@@ -16,8 +16,8 @@ export default {
   title: {
     flex: 1,
     textAlign: 'center',
-    color: Colors.snow,
-    marginTop: Metrics.doubleBaseMargin,
+    color: Colors.black,
+    marginTop: Metrics.doubleBaseMargin+5,
     backgroundColor: Colors.transparent,
     fontWeight: 'bold',
     fontSize: Fonts.size.input
@@ -32,6 +32,10 @@ export default {
     flex: 1,
     justifyContent: 'flex-end',
     flexDirection: 'row'
+  },
+  middleTextContainer: {
+    flex: 1,
+    justifyContent: 'center'
   },
   leftButtons: {
     flex: 1,

@@ -3,7 +3,8 @@ import { Metrics, Colors } from '../../Themes/'
 
 const navButton = {
   backgroundColor: Colors.transparent,
-  justifyContent: 'center'
+  justifyContent: 'center',
+  color: Colors.grey
 }
 
 export default StyleSheet.create({

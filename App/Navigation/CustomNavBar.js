@@ -35,7 +35,9 @@ class CustomNavBar extends React.Component {
       return <SearchBar onSearch={this.props.performSearch} searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
     } else {
       return (
-        <Text>{this.props.title}</Text>
+        <View style={styles.middleTextContainer}>
+          <Text style={styles.title}>{this.props.title.toUpperCase()}</Text>
+        </View>
       )
     }
   }
