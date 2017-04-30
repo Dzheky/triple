@@ -22,9 +22,9 @@ import Styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends React.Component {
   state = {
-    eMail: '',
+    eMail: 'test@test.ru',
     forgottenEmail: '',
-    password: '',
+    password: 'test',
     current: 'login',
     scrolling: false,
     keyboardUp: false,
