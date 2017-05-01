@@ -1,19 +1,29 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Metrics, Colors, Fonts } from '../../Themes/'
+import { Metrics, Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
-  ...ApplicationStyles.screen,
-  container: {
-    flex: 1,
-    marginTop: Metrics.navBarHeight,
-    backgroundColor: Colors.background
-  },
   row: {
     flex: 1,
     backgroundColor: Colors.lightGrey,
     marginVertical: Metrics.smallMargin,
     marginHorizontal: Metrics.baseMargin,
     justifyContent: 'center'
+  },
+  likeContainer: {
+    position: 'absolute',
+    top: 130,
+    right: Metrics.baseMargin,
+    zIndex: 100,
+    height: 40,
+    width: 40,
+    borderRadius: 100,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  likeIcon: {
+    backgroundColor: Colors.transparent,
+    height: 27
   },
   boldLabel: {
     ...Fonts.style.h5,
@@ -53,13 +63,5 @@ export default StyleSheet.create({
   image: {
     width: Metrics.screenWidth - Metrics.baseMargin * 2,
     height: 150
-  },
-  label: {
-    textAlign: 'center',
-    color: Colors.snow,
-    marginBottom: Metrics.smallMargin
-  },
-  listContent: {
-    marginTop: Metrics.baseMargin
   }
 })

@@ -42,7 +42,7 @@ export default {
     return (
       <TouchableOpacity onPress={callback}>
         <Icon name='search'
-          size={Metrics.icons.medium-5}
+          size={Metrics.icons.medium - 5}
           color={Colors.snow}
           style={styles.searchButton}
         />

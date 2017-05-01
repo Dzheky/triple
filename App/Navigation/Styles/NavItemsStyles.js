@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import { Metrics, Colors } from '../../Themes/'
+import { Colors } from '../../Themes/'
 
 const navButton = {
   backgroundColor: Colors.transparent,
@@ -9,19 +9,12 @@ const navButton = {
 
 export default StyleSheet.create({
   backButton: {
-    ...navButton,
-    marginTop: Metrics.baseMargin,
-    marginLeft: Metrics.baseMargin
+    ...navButton
   },
   navButtonLeft: {
-    ...navButton,
-    marginTop: Metrics.baseMargin*2,
-    marginLeft: Metrics.baseMargin
+    ...navButton
   },
   searchButton: {
-    ...navButton,
-    marginTop: Metrics.baseMargin*2.5,
-    marginRight: Metrics.baseMargin,
-    alignItems: 'center'
+    ...navButton
   }
 })

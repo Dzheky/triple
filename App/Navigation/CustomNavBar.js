@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react'
-import { View, Image, LayoutAnimation, Text } from 'react-native'
+import { View, LayoutAnimation, Text } from 'react-native'
 import NavItems from './NavItems'
 import styles from './Styles/CustomNavBarStyles'
 import SearchBar from '../Components/SearchBar'
 import { connect } from 'react-redux'
-import { Metrics, Images } from '../Themes'
 import SearchActions from '../Redux/SearchRedux'
 
 class CustomNavBar extends React.Component {
@@ -44,7 +43,7 @@ class CustomNavBar extends React.Component {
 
   renderRightButtons () {
     if (this.state.showSearchBar) {
-      return <View style={{width: Metrics.icons.medium}} />
+      return <View style={{width: 0}} />
     } else {
       return (
         <View style={styles.rightButtons}>

@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, Text, ListView, Image } from 'react-native'
+import { View, ListView, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
+import { Colors } from '../Themes/'
 // For empty lists
 import AlertMessage from '../Components/AlertMessage'
+import EventBox from '../Components/EventBox'
 // Styles
 import styles from './Styles/EventsScreenStyles'
 
@@ -36,26 +38,13 @@ class EventsScreen extends React.Component {
   renderRow (event) {
     let date = this.formatDate(event)
     return (
-      <View style={styles.row}>
-        <Image
-          style={styles.image}
-          resizeMode={'cover'}
-          source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/ed/78/cb/ed78cbf314edd1440f10465c8d4f219f.jpg'}}
-        />
-        <Text style={styles.boldLabel}>{event.title.split(' - ')[0]}</Text>
-        <Text style={styles.underLabel}>США</Text>
-        <View style={styles.greyLine} />
-        <View style={styles.bottomContainer}>
-          <Text style={styles.dates}>{date}</Text>
-          <Text style={styles.price}>$100</Text>
-        </View>
-      </View>
+      <EventBox date={date} event={event} />
     )
   }
 
   formatDate = (event) => {
     let getMonth = (month) => {
-      switch(month) {
+      switch (month) {
         case '01':
           return 'Января'
         case '02':
@@ -88,9 +77,9 @@ class EventsScreen extends React.Component {
     let day2 = parseInt(event.end.split('-')[2])
     let year1 = event.start.split('-')[0]
     let year2 = event.end.split('-')[0]
-    if(month1 == month2 && year1 == year2) {
+    if (month1 === month2 && year1 === year2) {
       return `${day1} - ${day2} ${month1} ${year1}`
-    } else if(year1 === year2) {
+    } else if (year1 === year2) {
       return `${day1} ${month1} - ${day2} ${month2} ${year1}`
     } else {
       return `${day1} ${month1} ${year1} - ${day2} ${month2} ${year2}`
@@ -122,6 +111,11 @@ class EventsScreen extends React.Component {
   render () {
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor={Colors.yellow}
+          barStyle='dark-content'
+          translucent
+        />
         <AlertMessage title='Nothing to See Here, Move Along' show={this.noRowData()} />
         <ListView
           contentContainerStyle={styles.listContent}

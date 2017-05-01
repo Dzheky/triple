@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
         <TextInput
           ref='searchText'
           autoFocus
-          placeholder='Search'
+          placeholder='Поиск'
           placeholderTextColor={Colors.black}
           underlineColorAndroid='transparent'
           style={styles.searchInput}
@@ -34,7 +34,7 @@ export default class SearchBar extends React.Component {
           selectionColor={Colors.black}
         />
         <TouchableOpacity onPress={onCancel} style={styles.cancelButton}>
-          <Text style={styles.buttonLabel}>Cancel</Text>
+          <Text style={styles.buttonLabel}>Отмена</Text>
         </TouchableOpacity>
       </View>
     )
