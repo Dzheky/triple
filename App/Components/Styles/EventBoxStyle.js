@@ -31,6 +31,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     color: 'black',
     textAlign: 'left',
+    width: Metrics.screenWidth - 80,
     marginTop: Metrics.smallMargin,
     marginHorizontal: Metrics.baseMargin
   },
