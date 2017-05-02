@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, ListView, StatusBar } from 'react-native'
+import { View, ListView, StatusBar, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Colors } from '../Themes/'
-// For empty lists
 import AlertMessage from '../Components/AlertMessage'
 import EventBox from '../Components/EventBox'
 // Styles
@@ -24,7 +23,8 @@ class EventsScreen extends React.Component {
 
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(props.results)
+      dataSource: ds.cloneWithRows(props.results),
+      page:'second'
     }
   }
 

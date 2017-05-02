@@ -15,5 +15,14 @@ export default {
   },
   rightButton: {
     color: Colors.snow
+  },
+  iconsCover: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    color: Colors.grey,
+    fontSize: 11
   }
 }

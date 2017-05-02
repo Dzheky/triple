@@ -83,7 +83,7 @@ export default class LaunchScreen extends React.Component {
       }, () => {
         console.log(response)
         if (response.access_token) {
-          Actions.mainScreen({type: ActionConst.RESET})
+          Actions.tabbar({type: ActionConst.RESET})
         } else if (response.error_description === 'Wrong email or password.') {
           this.error.showError('Неправильный email или пароль!')
         } else {
