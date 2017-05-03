@@ -1,0 +1,1000 @@
+{
+  "events": [
+    {
+      "end": "2017-05-08",
+      "id": 0,
+      "start": "2017-05-04",
+      "title": "SwingDiego (The Superbowl of Swing) - Registry Event",
+      "url": "http://www.swingdiego.com/"
+    },
+    {
+      "end": "2017-05-08",
+      "id": 1,
+      "start": "2017-05-04",
+      "title": "Swingin - Registry Event",
+      "url": "http://www.sis.djkenm.com"
+    },
+    {
+      "end": "2017-05-08",
+      "id": 2,
+      "start": "2017-05-05",
+      "title": "Scotland Swing Classic - Registry Event",
+      "url": "http://scotlandswingclassic.com"
+    },
+    {
+      "end": "2017-05-08",
+      "id": 3,
+      "start": "2017-05-05",
+      "title": "KIWI Fest - Registry Event",
+      "url": "http://"
+    },
+    {
+      "end": "2017-05-22",
+      "id": 4,
+      "start": "2017-05-18",
+      "title": "The Texas Classic - Registry Event",
+      "url": "http://www.thetexasclassic.com/"
+    },
+    {
+      "end": "2017-05-22",
+      "id": 5,
+      "start": "2017-05-19",
+      "title": "Swingsation - Registry Event",
+      "url": "http://rawconnection.com.au/swingsation/"
+    },
+    {
+      "end": "2017-05-23",
+      "id": 6,
+      "start": "2017-05-19",
+      "title": "Canadian Swing Championships (CSC) - Registry Event",
+      "url": "http://canadianswingchampionships.com"
+    },
+    {
+      "end": "2017-05-22",
+      "id": 7,
+      "start": "2017-05-19",
+      "title": "SOswing Convention - Registry Event",
+      "url": "http://23.235.192.56/~soswin5/"
+    },
+    {
+      "end": "2017-05-30",
+      "id": 8,
+      "start": "2017-05-25",
+      "title": "USA Grand National Dance Championship    (NASDE) - Registry Event",
+      "url": "http://usagrandnationals.com/GNDC/"
+    },
+    {
+      "end": "2017-05-30",
+      "id": 9,
+      "start": "2017-05-25",
+      "title": "FreZno Dance Classic - Registry Event",
+      "url": "http://freznodanceclassic.weebly.com"
+    },
+    {
+      "end": "2017-05-29",
+      "id": 10,
+      "start": "2017-05-25",
+      "title": "French Open West Coast Swing - Registry Event",
+      "url": "http://www.fowcs.com/"
+    },
+    {
+      "end": "2017-05-31",
+      "id": 11,
+      "start": "2017-05-26",
+      "title": "Show-Me Showdown - Registry Event",
+      "url": "http://www.theshowmeshowdown.com"
+    },
+    {
+      "end": "2017-05-29",
+      "id": 12,
+      "start": "2017-05-26",
+      "title": "Hungarian Open - Registry Event",
+      "url": "http://www.wcs-ho.com"
+    },
+    {
+      "end": "2017-06-05",
+      "id": 13,
+      "start": "2017-06-01",
+      "title": "Orange Blossom Dance Festival - Registry Event",
+      "url": "http://www.orangeblossomdance.net"
+    },
+    {
+      "end": "2017-06-05",
+      "id": 14,
+      "start": "2017-06-01",
+      "title": "Michigan Classic - Registry Event",
+      "url": "http://michiganclassicswing.com/"
+    },
+    {
+      "end": "2017-06-08",
+      "id": 15,
+      "start": "2017-06-07",
+      "title": "Slingshot Swing - Registry Event",
+      "url": "http://www.slingshotswing.no/"
+    },
+    {
+      "end": "2017-06-13",
+      "id": 16,
+      "start": "2017-06-08",
+      "title": "Jack & Jill O'Rama - Registry Event",
+      "url": "http://jackandjillorama.com/"
+    },
+    {
+      "end": "2017-06-09",
+      "id": 17,
+      "start": "2017-06-08",
+      "title": "CMJ NSW West Coast Swing Dance Championships - Registry Event",
+      "url": "http://www.ceroc.com.au/events/championships/"
+    },
+    {
+      "end": "2017-06-12",
+      "id": 18,
+      "start": "2017-06-08",
+      "title": "Baltic Swing - Registry Event",
+      "url": "http://www.balticswing.pl"
+    },
+    {
+      "end": "2017-06-13",
+      "id": 19,
+      "start": "2017-06-09",
+      "title": "Swing Open Kazan - Registry Event",
+      "url": "https://vk.com/event137657917"
+    },
+    {
+      "end": "2017-06-19",
+      "id": 20,
+      "start": "2017-06-15",
+      "title": "D-Townswing - Registry Event",
+      "url": "http://d-townswing.com"
+    },
+    {
+      "end": "2017-06-19",
+      "id": 21,
+      "start": "2017-06-15",
+      "title": "Dance N Play - Registry Event",
+      "url": "http://dancenplay.com"
+    },
+    {
+      "end": "2017-06-20",
+      "id": 22,
+      "start": "2017-06-15",
+      "title": "Finnfest - Registry Event",
+      "url": "http://www.rytmipolku.com/finnfest"
+    },
+    {
+      "end": "2017-06-19",
+      "id": 23,
+      "start": "2017-06-16",
+      "title": "Swingapalooza - Registry Event",
+      "url": "http://www.swingapaloozaevent.com/"
+    },
+    {
+      "end": "2017-06-26",
+      "id": 24,
+      "start": "2017-06-22",
+      "title": "Colorado Country Classic - Registry Event",
+      "url": "http://www.coloradocountryclassic.net/"
+    },
+    {
+      "end": "2017-06-26",
+      "id": 25,
+      "start": "2017-06-23",
+      "title": "Korea Westival - Registry Event",
+      "url": "http://www.koreawestival.com"
+    },
+    {
+      "end": "2017-07-03",
+      "id": 26,
+      "start": "2017-06-28",
+      "title": "American  Dance Camp - Non-Registry",
+      "url": "http://www.americanodance.ru"
+    },
+    {
+      "end": "2017-07-04",
+      "id": 27,
+      "start": "2017-06-29",
+      "title": "Ft. Lauderdale Swing & Shag Beach Bash - Registry Event",
+      "url": "http://flssbb.net"
+    },
+    {
+      "end": "2017-07-03",
+      "id": 28,
+      "start": "2017-06-29",
+      "title": "Liberty Swing Championships      (NASDE) - Registry Event",
+      "url": "http://www.libertyswing.com"
+    },
+    {
+      "end": "2017-07-03",
+      "id": 29,
+      "start": "2017-06-30",
+      "title": "New Zealand Open Swing Dance Championships - Registry Event",
+      "url": "http://www.thenzopen.co.nz"
+    },
+    {
+      "end": "2017-07-04",
+      "id": 30,
+      "start": "2017-06-30",
+      "title": "Indy Dance Explosion - Registry Event",
+      "url": "http://www.indydancex.com"
+    },
+    {
+      "end": "2017-07-04",
+      "id": 31,
+      "start": "2017-06-30",
+      "title": "Neverland Swing  - Registry Event",
+      "url": "http://www.neverlandswing.nl/"
+    },
+    {
+      "end": "2017-07-06",
+      "id": 32,
+      "start": "2017-07-05",
+      "title": "Sao Paulo Swing Dance Championships - Registry Event",
+      "url": "http://www.spsd.com.br"
+    },
+    {
+      "end": "2017-07-10",
+      "id": 33,
+      "start": "2017-07-06",
+      "title": "Wild Wild Westie - Registry Event",
+      "url": "http://www.wildwildwestie.com"
+    },
+    {
+      "end": "2017-07-10",
+      "id": 34,
+      "start": "2017-07-06",
+      "title": "Big Apple Country Dance & NY Swing Congress - Registry Event",
+      "url": "http://www.bigapplecountrydance.com/"
+    },
+    {
+      "end": "2017-07-10",
+      "id": 35,
+      "start": "2017-07-06",
+      "title": "GPSDC Annual July 4th Convention - Registry Event",
+      "url": "http://www.phoenixjuly4thswingconvention.com"
+    },
+    {
+      "end": "2017-07-10",
+      "id": 36,
+      "start": "2017-07-07",
+      "title": "Portland Dance Festival - Registry Event",
+      "url": "http://www.portlanddancefestival.com"
+    },
+    {
+      "end": "2017-07-17",
+      "id": 37,
+      "start": "2017-07-13",
+      "title": "Toronto Open Swing/Hustle Championships - Registry Event",
+      "url": "http://www.toshc.com/"
+    },
+    {
+      "end": "2017-07-17",
+      "id": 38,
+      "start": "2017-07-13",
+      "title": "Florida Dance Magic - Registry Event",
+      "url": "http://www.floridadancemagic.com"
+    },
+    {
+      "end": "2017-07-24",
+      "id": 39,
+      "start": "2017-07-20",
+      "title": "New Orleans Dance Mardi Gras - Registry Event",
+      "url": "http://www.dancemardigras.com"
+    },
+    {
+      "end": "2017-07-24",
+      "id": 40,
+      "start": "2017-07-20",
+      "title": "Rock The Barn - Registry Event",
+      "url": "http://wcsumea.se/rock-the-barn/index.html"
+    },
+    {
+      "end": "2017-07-24",
+      "id": 41,
+      "start": "2017-07-20",
+      "title": "Sacramento All Swing - Registry Event",
+      "url": "http://www.sacramentoallswing.com/"
+    },
+    {
+      "end": "2017-07-24",
+      "id": 42,
+      "start": "2017-07-21",
+      "title": "Swing It Like It's Hot - Registry Event",
+      "url": "http://www.swingithot.com"
+    },
+    {
+      "end": "2017-07-31",
+      "id": 43,
+      "start": "2017-07-27",
+      "title": "Swingtime in the Rockies   (NASDE) - Registry Event",
+      "url": "http://www.swingtimeintherockies.com/"
+    },
+    {
+      "end": "2017-07-31",
+      "id": 44,
+      "start": "2017-07-27",
+      "title": "Palm Springs Summer Dance Camp Classic - Registry Event",
+      "url": "http://www.peoplewhodance.net/"
+    },
+    {
+      "end": "2017-08-07",
+      "id": 45,
+      "start": "2017-07-28",
+      "title": "Sea Sun & Swing Camp - Registry Event",
+      "url": "http://www.seasunswing.net/"
+    },
+    {
+      "end": "2017-08-03",
+      "id": 46,
+      "start": "2017-08-02",
+      "title": "Arizona Dance Classic - Registry Event",
+      "url": "http://www.arizonadanceclassic.com/"
+    },
+    {
+      "end": "2017-08-07",
+      "id": 47,
+      "start": "2017-08-03",
+      "title": "New England Dance Festival - Registry Event",
+      "url": "http://www.nedancefestival.com/"
+    },
+    {
+      "end": "2017-08-07",
+      "id": 48,
+      "start": "2017-08-03",
+      "title": "Midwest Westie Fest - Registry Event",
+      "url": "http://www.midwestwestiefest.com/"
+    },
+    {
+      "end": "2017-08-07",
+      "id": 49,
+      "start": "2017-08-03",
+      "title": "Tampa Bay Classic (NASDE) - Registry Event",
+      "url": "http://tampabayclassic.com"
+    },
+    {
+      "end": "2017-08-07",
+      "id": 50,
+      "start": "2017-08-04",
+      "title": "Swingtacular: The Galactic Open - Registry Event",
+      "url": "http://www.dancegeekproductions.com/"
+    },
+    {
+      "end": "2017-08-14",
+      "id": 51,
+      "start": "2017-08-10",
+      "title": "German Open WCS Championships - Registry Event",
+      "url": "https://go-wcs.com"
+    },
+    {
+      "end": "2017-08-14",
+      "id": 52,
+      "start": "2017-08-10",
+      "title": "Swing Fling - Registry Event",
+      "url": "http://www.swingfling.com/"
+    },
+    {
+      "end": "2017-08-15",
+      "id": 53,
+      "start": "2017-08-10",
+      "title": "Rija Summer Swing - Registry Event",
+      "url": "http://rigasummerswing.com/#home"
+    },
+    {
+      "end": "2017-08-14",
+      "id": 54,
+      "start": "2017-08-11",
+      "title": "LoneStar Invitational - Registry Event",
+      "url": "http://www.lonestarcountrydance.com/"
+    },
+    {
+      "end": "2017-08-21",
+      "id": 55,
+      "start": "2017-08-18",
+      "title": "Chicagoland Country & Swing Dance Festival - Registry Event",
+      "url": "http://www.chicagolanddancefestival.com"
+    },
+    {
+      "end": "2017-08-21",
+      "id": 56,
+      "start": "2017-08-18",
+      "title": "Swedish Swing Summer Camp - Registry Event",
+      "url": "http://www.wcs.dance/sssc/"
+    },
+    {
+      "end": "2017-08-24",
+      "id": 57,
+      "start": "2017-08-23",
+      "title": "Summer Hummer    (NASDE) - Registry Event",
+      "url": "http://www.dancepros.net/"
+    },
+    {
+      "end": "2017-09-04",
+      "id": 58,
+      "start": "2017-08-31",
+      "title": "River City Swing - Registry Event",
+      "url": "http://www.rivercityswing.com/"
+    },
+    {
+      "end": "2017-09-05",
+      "id": 59,
+      "start": "2017-08-31",
+      "title": "Desert City Swing - Registry Event",
+      "url": "http://www.desertcityswing.com"
+    },
+    {
+      "end": "2017-09-05",
+      "id": 60,
+      "start": "2017-08-31",
+      "title": "South Bay Dance Fling - Registry Event",
+      "url": "http://www.southbaydancefling.com"
+    },
+    {
+      "end": "2017-09-04",
+      "id": 61,
+      "start": "2017-09-01",
+      "title": "Dallas D.A.N.C.E. - Registry Event",
+      "url": "http://www.dallasdance.com/"
+    },
+    {
+      "end": "2017-09-11",
+      "id": 62,
+      "start": "2017-09-03",
+      "title": "Sunny Side Dance Camp - Registry Event",
+      "url": "http://www.improteam.com/"
+    },
+    {
+      "end": "2017-09-11",
+      "id": 63,
+      "start": "2017-09-07",
+      "title": "Bavarian Open WCS - Registry Event",
+      "url": "http://bavarianopen.com/"
+    },
+    {
+      "end": "2017-09-11",
+      "id": 64,
+      "start": "2017-09-07",
+      "title": "Trilogy Swing - Registry Event",
+      "url": "http://www.swingtrilogy.com"
+    },
+    {
+      "end": "2017-09-11",
+      "id": 65,
+      "start": "2017-09-07",
+      "title": "Upstate Dance Challenge - Registry Event",
+      "url": "http://www.upstatedancechallenge.com"
+    },
+    {
+      "end": "2017-09-18",
+      "id": 66,
+      "start": "2017-09-14",
+      "title": "Norway Westie Fest - Registry Event",
+      "url": "http://www.westie-fest.com/"
+    },
+    {
+      "end": "2017-09-18",
+      "id": 67,
+      "start": "2017-09-14",
+      "title": "Best of the Best - Registry Event",
+      "url": "http://www.bestofthebestwcs.com/"
+    },
+    {
+      "end": "2017-09-18",
+      "id": 68,
+      "start": "2017-09-15",
+      "title": "Rocky Mountain Five Dance (RM5) - Registry Event",
+      "url": "http://www.rm5dance.com"
+    },
+    {
+      "end": "2017-09-25",
+      "id": 69,
+      "start": "2017-09-21",
+      "title": "BridgeTown Swing - Registry Event",
+      "url": "http://www.portlandswing.org/bts"
+    },
+    {
+      "end": "2017-09-25",
+      "id": 70,
+      "start": "2017-09-21",
+      "title": "Meet Me in St. Louis Swing Dance Championships - Registry Event",
+      "url": "http://www.meetmeinstlouissdc.com"
+    },
+    {
+      "end": "2017-09-25",
+      "id": 71,
+      "start": "2017-09-22",
+      "title": "Citadel Swing - Registry Event",
+      "url": "http://www.citadelswing.ro/"
+    },
+    {
+      "address": "630 NAAMANS ROAD, Delaware 19703, United states",
+      "country": "USA",
+      "end": "2017-09-25",
+      "guests": [
+        "Melissa Rutz",
+        "Parker Dearborn",
+        "Robert Royston",
+        "John Festa",
+        "Kay Newhouse",
+        "Matthew Smith",
+        "Lara Deni",
+        "Steve Wilder",
+        "Brad Wheeler",
+        "Sarah Wheeler",
+        "Keith Stremmel",
+        "Alyssa Gillespie",
+        "Debbie Lynn Tuttle",
+        "Jacqueline Joyner",
+        "Matt Davis",
+        "Desirae Vasquez"
+      ],
+      "hotel_url": "http://phillyswings.com/hotel/",
+      "id": 72,
+      "prices": [
+        {
+          "price": "$109",
+          "until": "2017-09-08"
+        },
+        {
+          "price": "$129"
+        }
+      ],
+      "registration": "http://phillyswings.com/register/",
+      "start": "2017-09-22",
+      "title": "Philly Swing Classic - Registry Event",
+      "url": "http://phillyswings.com"
+    },
+    {
+      "address": "4355 Ashford Dunwoody Road, Atlanta, GA 30346",
+      "country": "USA",
+      "end": "2017-10-02",
+      "guests": [
+        "Robert Royston",
+        "Brandi Guild",
+        "Ben Morris",
+        "Victoria Henk",
+        "John Lindo",
+        "Patty Vo",
+        "Ben McHenry",
+        "Cameo Cross",
+        "Sean, McKeever",
+        "Courtney Adair",
+        "Kris Swearingen",
+        "Tashina Beckmann",
+        "Gregory Scott",
+        "Lemery Rollins",
+        "Stephen White",
+        "Sonya Dessureault",
+        "Laureen Mason",
+        "Dawn Garrish",
+        "Doug Rousar",
+        "Debbie Ramsey",
+        "Robin Smith",
+        "Robert Cordoba"
+      ],
+      "hotel_url": "http://www.atlantaswingclassic.com/hotel.html",
+      "id": 73,
+      "prices": [
+      ],
+      "registration": "http://www.atlantaswingclassic.com/registration.html",
+      "start": "2017-09-29",
+      "title": "Atlanta Swing Classic - Registry Event",
+      "url": "http://www.atlantaswingclassic.com/"
+    },
+    {
+      "address": "Copthorne Hotel, Slough, Windsor, SL1 2YE",
+      "country": "UK",
+      "end": "2017-10-02",
+      "guests": [
+        "Kyle Redd",
+        "Sarah Vann Drake",
+        "Maxence Martin",
+        "Virginie Grondin",
+        "Maxime Zzaoui",
+        "Torri Smith",
+        "Lee Easton",
+        "Fabienne Henshall"
+      ],
+      "hotel_url": "http://midlandswingopen.com/hotel/",
+      "id": 74,
+      "prices": [
+        {
+          "price": "£100",
+          "until": "2017-05-15"
+        },
+        {
+          "price": "£120",
+          "until": "2017-08-30"
+        },
+        {
+          "price": "£140"
+        }
+      ],
+      "registration": "http://midlandswingopen.com/passes/",
+      "start": "2017-09-29",
+      "title": "Midland Swing Open - Registry Event",
+      "url": "http://www.midlandswingopen.com"
+    },
+    {
+      "address": "Salme tn. 12, Tallinn, 10413, Estonia",
+      "country": "Estonia",
+      "end": "2017-10-02",
+      "guests": [
+        "Tara Trafzer",
+        "Christopher Dumond",
+        "Oliver Massart",
+        "Virginie Massart"
+      ],
+      "hotel_url": "http://oldtowndance.com/location",
+      "id": 75,
+      "prices": [
+        {
+          "price": "€120",
+          "until": "2017-06-01"
+        },
+        {
+          "price": "€130",
+          "until": "2017-08-01"
+        },
+        {
+          "price": "€140",
+          "until": "2017-09-25"
+        },
+        {
+          "price": "€160"
+        }
+      ],
+      "registration": "http://oldtowndance.com/registration",
+      "start": "2017-09-29",
+      "title": "Old Town Swing - Registry Event",
+      "url": "http://oldtowndance.com/"
+    },
+    {
+      "address": "Hyatt Regency San Francisco Airport, 1333 Bayshore Hwy, Burlingame CA 94010",
+      "country": "USA",
+      "end": "2017-10-09",
+      "guests": [
+      ],
+      "hotel_url": "https://boogiebythebay.com/location/hotel/",
+      "id": 76,
+      "prices": [
+      ],
+      "registration": "https://boogiebythebay.com/registration/",
+      "start": "2017-10-05",
+      "title": "Boogie By The Bay - Registry Event",
+      "url": "http://boogiebythebay.com"
+    },
+    {
+      "address": "Via Vittorio Padovani, 38, 20099 Sesto San Giovanni MI, Italia",
+      "country": "Italy",
+      "end": "2017-10-16",
+      "guests": [
+        "Jordan Frisbee",
+        "Tatiana Mollmann",
+        "Lee Easton",
+        "Fabienne Henshall",
+        "Maxence Martin",
+        "Virginie Grondin",
+        "John Lindo",
+        "Bret Navarre",
+        "Joelle Navarre"
+      ],
+      "hotel_url": "http://www.westcoastswing.it/en/italian-open-13-14-15-october-2017/",
+      "id": 77,
+      "prices": [
+        {
+          "price": "€169"
+        }
+      ],
+      "registration": "http://www.westcoastswing.it/en/italian-open-13-14-15-october-2017/",
+      "start": "2017-10-13",
+      "title": "Italian Open West Coast Swing - Registry Event",
+      "url": "http://www.westcoastswingitaly.it/en/"
+    },
+    {
+      "address": "Montreal, 800 Pl Leigh-Capreol, Quebec H4Y 0A4, Canada",
+      "country": "Canada",
+      "end": "2017-10-16",
+      "guests": [
+      ],
+      "hotel_url": "http://www.montrealwestiefest.com/#post-328-title",
+      "id": 78,
+      "prices": [
+      ],
+      "registration": "http://www.montrealwestiefest.com/#post-332",
+      "start": "2017-10-13",
+      "title": "Montreal Westie Fest - Registry Event",
+      "url": "http://www.montrealwestiefest.com"
+    },
+    {
+      "address": "Irvine, 1880 MacArthur Blvd, California 92612, United States",
+      "country": "USA",
+      "end": "2017-10-23",
+      "guests": [
+      ],
+      "hotel_url": "http://www.paradisecountrydancefestival.com/www.paradisecountrydancefestival.com/HOTEL.html",
+      "id": 79,
+      "prices": [
+        {
+          "price": "$115",
+          "until": "2017-09-29"
+        },
+        {
+          "price": "$135"
+        }
+      ],
+      "registration": "http://www.paradisecountrydancefestival.com/www.paradisecountrydancefestival.com/ONLINE_REGISTRATION.html",
+      "start": "2017-10-19",
+      "title": "Paradise Country & Swing Dance Festival - Registry Event",
+      "url": "http://www.paradisecountrydancefestival.com/www.paradisecountrydancefestival.com/HOME.html"
+    },
+    {
+      "address": "240 Mall Boulevard, King of Prussia, PA, 19406",
+      "country": "USA",
+      "end": "2017-10-23",
+      "guests": [
+      ],
+      "hotel_url": "http://sparklage.com/hotel/",
+      "id": 80,
+      "prices": [
+        {
+          "price": "$100",
+          "until": "2017-08-01"
+        },
+        {
+          "price": "$110",
+          "until": "2017-09-01"
+        },
+        {
+          "price": "$120",
+          "until": "2017-10-01"
+        },
+        {
+          "price": "$125"
+        }
+      ],
+      "registration": "http://sparklage.com/online-registration/",
+      "start": "2017-10-20",
+      "title": "Swustlicious - Registry Event",
+      "url": "http://sparklage.com/swustlicious/"
+    },
+    {
+      "address": "Stockholm, Rökerigatan 21, Stockholm 121 62, Sweden",
+      "country": "Sweden",
+      "end": "2017-10-23",
+      "guests": [
+        "Jordan Frisbee",
+        "Tatiana Mollmann",
+        "Maxence Martin",
+        "Virginie Grondin",
+        "Ludovic Pelegrin Pardou",
+        "Natalyia Kharlanova",
+        "Browly Adjavon"
+      ],
+      "hotel_url": "http://www.snowcs.se/venue.php",
+      "id": 81,
+      "prices": [
+        {
+          "price": "1100 SEK",
+          "until": "2017-05-31"
+        },
+        {
+          "price": "1400 SEK",
+          "until": "2017-08-31"
+        },
+        {
+          "price": "1700 SEK"
+        }
+      ],
+      "registration": "http://www.snowcs.se/register.php",
+      "start": "2017-10-20",
+      "title": "Scandinavian Open WCS - Registry Event",
+      "url": "http://www.snowcs.se"
+    },
+    {
+      "address": "Beaumont Estate, Burfield Road, Old Windsor, Windsor, SL4 2JJ UK",
+      "country": "UK",
+      "end": "2017-10-24",
+      "guests": [
+        "Robert Royston",
+        "Brandi Guild",
+        "Ben Morris",
+        "Victoria Henk",
+        "Hugo Miguez",
+        "Stacey Kay",
+        "Browly Adjavon",
+        "Anyssa Rae Olivares"
+      ],
+      "hotel_url": "http://www.jiveaddiction.com/event-type/west-coast-swing/european-swing-challenge#venue",
+      "id": 82,
+      "prices": [
+        {
+          "price": "£249"
+        }
+      ],
+      "registration": "http://www.jiveaddiction.com/event-type/west-coast-swing/register-for-a-west-coast-swing-event/register?event=111&n=european-swing-challenge",
+      "start": "2017-10-20",
+      "title": "European Swing Challenge - Non-Registry",
+      "url": "http://www.jiveaddiction.com/event-type/west-coast-swing/uk-european-wcs-championships-2017"
+    },
+    {
+      "address": "3635 Fashion Way, Torrance, California 90503, UNITED STATES",
+      "country": "USA",
+      "end": "2017-10-30",
+      "guests": [
+        "Benji Schwimmer",
+        "Kyle Redd",
+        "Sarah Vann Drake",
+        "Ben Morris",
+        "Victoria Henk",
+        "Parker Dearborn",
+        "Melissa Rutz",
+        "John Lindo",
+        "Ben McHenry",
+        "Cameo Cross"
+      ],
+      "hotel_url": "http://centralcoastswingdance.com/halloween/halloween/HST_Hotel.html",
+      "id": 83,
+      "prices": [
+        {
+          "price": "$139"
+        }
+      ],
+      "registration": "http://centralcoastswingdance.com/halloween/halloween/Tickets_buttons.html",
+      "start": "2017-10-26",
+      "title": "Halloween Swingthing - Registry Event",
+      "url": "http://www.halloweenswingthing.com/"
+    },
+    {
+      "address": "Lombard Westin at Yorktown Center, 70 Yorktown Center, Illinois 60148, United States",
+      "country": "USA",
+      "end": "2017-10-31",
+      "hotel_url": "http://swingcitychicago.com/location/",
+      "id": 84,
+      "start": "2017-10-27",
+      "title": "Swing City Chicago - Registry Event",
+      "url": "http://swingcitychicago.com"
+    },
+    {
+      "country": "Russia",
+      "end": "2017-11-06",
+      "id": 85,
+      "start": "2017-11-02",
+      "title": "Moscow Westie Fest - Registry Event",
+      "url": "http://westiefest.org/en/"
+    },
+    {
+      "address": "55 US-50, Nevada 89449, United States",
+      "country": "USA",
+      "end": "2017-11-06",
+      "hotel_url": "http://www.michelledance.com//mmm.html#hotel",
+      "id": 86,
+      "start": "2017-11-02",
+      "title": "Mountain Magic Dance Convention - Registry Event",
+      "url": "http://www.michelledance.com/mmm.html"
+    },
+    {
+      "address": "2345 Commonwealth Avenue, Massachusetts 02466, United States",
+      "country": "USA",
+      "end": "2017-11-13",
+      "guests": [
+      ],
+      "hotel_url": "http://www.swingingnewengland.com/hotel.html",
+      "id": 87,
+      "prices": [
+      ],
+      "registration": "http://www.swingingnewengland.com/sign-up.html",
+      "start": "2017-11-09",
+      "title": "Swingin' New England Dance Festival - Registry Event",
+      "url": "http://www.swingingnewengland.com"
+    },
+    {
+      "country": "USA",
+      "end": "2017-11-14",
+      "id": 88,
+      "start": "2017-11-09",
+      "title": "Sea To Sky - Seattle - Registry Event",
+      "url": "http://www.seatoskydance.com/"
+    },
+    {
+      "country": "UK",
+      "end": "2017-11-21",
+      "id": 89,
+      "start": "2017-11-16",
+      "title": "London SWINGvitational  - Registry Event",
+      "url": "http://www.londonswingvitational.co.uk"
+    },
+    {
+      "address": "2300 Dulles Corner Blvd, Virginia 20171 , United States",
+      "country": "USA",
+      "end": "2017-11-20",
+      "guests": [
+      ],
+      "hotel_url": "http://www.dcswingexperience.com/hotel.htm",
+      "id": 90,
+      "prices": [
+      ],
+      "registration": "http://www.dcswingexperience.com/tickets.htm",
+      "start": "2017-11-16",
+      "title": "DC Swing Experience (DCSX) - Registry Event",
+      "url": "http://www.dcswingexperience.com"
+    },
+    {
+      "country": "USA",
+      "end": "2017-11-27",
+      "id": 91,
+      "start": "2017-11-23",
+      "title": "US Open Swing Dance Championships     (NASDE) - Registry Event",
+      "url": "http://usopenswing.com"
+    },
+    {
+      "country": "USA",
+      "end": "2017-12-04",
+      "id": 92,
+      "start": "2017-11-30",
+      "title": "The After Party - Registry Event",
+      "url": "http://www.tapwcs.com"
+    },
+    {
+      "country": "Norway",
+      "end": "2017-12-04",
+      "id": 93,
+      "start": "2017-12-01",
+      "title": "Winter White WCS - Registry Event",
+      "url": "http://www.winterwhitewcs.com"
+    },
+    {
+      "country": "USA",
+      "end": "2018-01-02",
+      "id": 94,
+      "start": "2017-12-28",
+      "title": "Palm Springs New Year - Registry Event",
+      "url": "http://peoplewhodance.net/"
+    },
+    {
+      "country": "USA",
+      "end": "2018-01-15",
+      "id": 95,
+      "start": "2018-01-11",
+      "title": "Monterey Swingfest - Registry Event",
+      "url": "http://www.centralcoastswingdance.com/"
+    },
+    {
+      "country": "USA",
+      "end": "2018-01-16",
+      "id": 96,
+      "start": "2018-01-12",
+      "title": "Austin Swing Dance Championships - Registry Event",
+      "url": "http://www.austinswingdancechampionships.com"
+    },
+    {
+      "country": "USA",
+      "end": "2018-01-29",
+      "id": 97,
+      "start": "2018-01-25",
+      "title": "Derby City Swing - Registry Event",
+      "url": "http://www.DerbyCitySwing.com"
+    },
+    {
+      "country": "USA",
+      "end": "2018-02-06",
+      "id": 98,
+      "start": "2018-02-01",
+      "title": "Charlotte Westie Fest - Registry Event",
+      "url": "http://www.charlottewestiefest.com/"
+    },
+    {
+      "address": "Sankt-Peterburgskiy pr. 34, Saint Petersburg 198510, Russia",
+      "country": "Russia",
+      "end": "2018-02-05",
+      "guests": [
+      ],
+      "hotel_url": "http://swingandsnow.ru/lang/en/venue/",
+      "id": 99,
+      "prices": [
+      ],
+      "registration": "http://swingandsnow.ru/lang/en/registration/",
+      "start": "2018-02-01",
+      "title": "Swing & Snow - Registry Event",
+      "url": "http://swingandsnow.ru"
+    }
+  ]
+}

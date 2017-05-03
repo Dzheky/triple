@@ -9,8 +9,11 @@ import { Colors, Metrics } from '../Themes'
 
 // screens identified by the router
 import LaunchScreen from '../Containers/LaunchScreen'
+import FavoriteEvents from '../Containers/FavoriteEventsScreen'
 import EventsScreen from '../Containers/EventsScreen'
-
+import PointSearch from '../Containers/PointSearchScreen'
+import TopDancers from '../Containers/TopDancersScreen'
+import Profile from '../Containers/ProfileScreen'
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
 ***************************/
@@ -55,20 +58,20 @@ class NavigationRouter extends Component {
           <Scene key='drawerChildrenWrapper' navBar={CustomNavBar} navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
             <Scene initial key='launchScreen' component={LaunchScreen} title="Login" hideNavBar hideTabBar/>
             <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor: Colors.snow}} selectedIconStyle={{backgroundColor: Colors.yellow}}>
-              <Scene key="mainScreen1" title="Профиль" icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='mainScreenElement' component={EventsScreen} hideNavBar={false} />
+              <Scene key="Profile" title="Профиль" icon={TabIcon} navBar={CustomNavBar}>
+                <Scene key='ProfileScreen' component={Profile} hideNavBar={false} />
               </Scene>
-              <Scene key="mainScreen2" title="Ранги" icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='mainScreenElement' component={EventsScreen} hideNavBar={false} />
+              <Scene key="Rang" title="Ранги" icon={TabIcon} navBar={CustomNavBar}>
+                <Scene key='RangScreen' component={PointSearch} hideNavBar={false} />
               </Scene>
-              <Scene initial key="mainScreen" title="Ивенты" icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='mainScreenElement' component={EventsScreen} hideNavBar={false} />
+              <Scene initial key="Events" title="Ивенты" icon={TabIcon} navBar={CustomNavBar}>
+                <Scene key='EventsScreen' component={EventsScreen} hideNavBar={false} />
               </Scene>
-              <Scene key="mainScreen3" title="Избранное" icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='mainScreenElement' component={EventsScreen} hideNavBar={false} />
+              <Scene key="Favorite" title="Избранное" icon={TabIcon} navBar={CustomNavBar}>
+                <Scene key='FavoriteScreen' component={FavoriteEvents} hideNavBar={false} />
               </Scene>
-              <Scene key="mainScreen4" title="Проффи" icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='mainScreenElement' component={EventsScreen} hideNavBar={false} />
+              <Scene key="TopDancers" title="Проффи" icon={TabIcon} navBar={CustomNavBar}>
+                <Scene key='TopDancersScreen' component={TopDancers} hideNavBar={false} />
               </Scene>
             </Scene>
           </Scene>

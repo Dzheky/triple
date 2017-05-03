@@ -5,9 +5,15 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   loginRequest: ['username', 'password'],
-  loginSuccess: ['username'],
+  loginSuccess: ['token'],
   loginFailure: ['error'],
-  logout: null
+  logout: null,
+  registerRequest: ['email', 'password'],
+  registerSuccess: ['token'],
+  registerFailure: ['error'],
+  passwordResetRequest: ['email'],
+  passwordResetSuccess: ['message'],
+  passwordResetFailure: ['error']
 })
 
 export const LoginTypes = Types
@@ -16,7 +22,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  username: null,
+  token: null,
   error: null,
   fetching: false
 })
@@ -36,6 +42,7 @@ export const failure = (state, { error }) =>
 
 // we've logged out
 export const logout = (state) => INITIAL_STATE
+
 
 /* ------------- Hookup Reducers To Types ------------- */
 

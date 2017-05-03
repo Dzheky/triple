@@ -1,5 +1,18 @@
 export default {
   // Functions return fixtures
+  login: (username, password) => {
+    return {
+      access_token: 'tesetAccessToken'
+    }
+  },
+  register: (email, password) => {
+    return {
+      _id: 'testId'
+    }
+  },
+  resetPassword: (email) => {
+    return "We've just sent you an email to reset your password."
+  },
   getRoot: () => {
     return {
       ok: true,
@@ -10,6 +23,12 @@ export default {
     return {
       ok: true,
       data: require('../Fixtures/rateLimit.json')
+    }
+  },
+  getEvents: () => {
+    return {
+      ok: true,
+      data: require('../Fixtures/events.json')
     }
   },
   getUser: (username) => {

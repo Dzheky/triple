@@ -1,5 +1,6 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce'
+import Secrets from 'react-native-config'
 
 // our "constructor"
 const create = (baseURL = 'https://api.github.com/') => {
@@ -20,11 +21,20 @@ const create = (baseURL = 'https://api.github.com/') => {
     timeout: 10000
   })
 
+  const loginApi = apisauce.create({
+    baseURL:'https://dzheky.eu.auth0.com/',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    timeout: 10000
+  })
+
   // Wrap api's addMonitor to allow the calling code to attach
   // additional monitors in the future.  But only in __DEV__ and only
   // if we've attached Reactotron to console (it isn't during unit tests).
   if (__DEV__ && console.tron) {
     api.addMonitor(console.tron.apisauce)
+    loginApi.addMonitor(console.tron.apisauce)
   }
 
   // ------
@@ -41,8 +51,12 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
+  const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password' })
+  const register = (email, password) => loginApi.post('dbconnections/signup', { client_id: Secrets.AUTH0_KEY, email, password, connection: 'Triple' })
+  const resetPassword = (email) => loginApi.post('change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
+  const getEvents = () => api.get('eventList')
   const getUser = (username) => api.get('search/users', {q: username})
 
   // ------
@@ -61,6 +75,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
+    getEvents,
     getUser
   }
 }
