@@ -35,7 +35,7 @@ class TopError extends React.Component {
 
   showError = () => {
     Animated.timing(this.state.top, {
-      toValue: 0,
+      toValue: 25,
       easing: Easing.elastic(2)
     }).start()
   }

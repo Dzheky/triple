@@ -51,6 +51,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
+  console.tron.log(Secrets.AUTH0_KEY)
   const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password' })
   const register = (email, password) => loginApi.post('dbconnections/signup', { client_id: Secrets.AUTH0_KEY, email, password, connection: 'Triple' })
   const resetPassword = (email) => loginApi.post('dbconnections/change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
