@@ -12,6 +12,8 @@ import {
 import { Images, Colors } from '../Themes'
 import WideInput from '../Components/WideInput'
 import WideButton from '../Components/WideButton'
+import { connect } from 'react-redux'
+import LoginActions from '../Redux/LoginRedux'
 import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
 import key from '../../apiKeys'
@@ -20,7 +22,7 @@ import { Actions, ActionConst } from 'react-native-router-flux'
 // Styles
 import Styles from './Styles/LaunchScreenStyles'
 
-export default class LaunchScreen extends React.Component {
+class LaunchScreen extends React.Component {
   state = {
     eMail: 'test@test.ru',
     forgottenEmail: '',
@@ -28,11 +30,9 @@ export default class LaunchScreen extends React.Component {
     current: 'login',
     scrolling: false,
     keyboardUp: false,
-    forgottenVisible: false,
-    loginWaiting: false,
-    registrationWaiting: false,
-    resetPasswordWaiting: false
+    forgottenVisible: false
   }
+
   componentWillMount () {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide)
@@ -59,45 +59,8 @@ export default class LaunchScreen extends React.Component {
     }
   }
 
-  login = async () => {
-    try {
-      const url = 'https://dzheky.eu.auth0.com/oauth/ro'
-      let data = {
-        client_id: key.auth0clientId,
-        username: this.state.eMail,
-        password: this.state.password,
-        connection: 'Triple',
-        grant_type: 'password'
-      }
-      let fetchData = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      let response = await fetch(url, fetchData)
-      response = await response.json()
-      this.setState({
-        loginWaiting: false
-      }, () => {
-        console.log(response)
-        if (response.access_token) {
-          Actions.tabbar({type: ActionConst.RESET})
-        } else if (response.error_description === 'Wrong email or password.') {
-          this.error.showError('Неправильный email или пароль!')
-        } else {
-          this.error.showError('Что-то пошло не так')
-        }
-      })
-    } catch (error) {
-      this.setState({
-        loginWaiting: false
-      }, () => {
-        console.log(error)
-        this.error.showError('Что-то пошло не так')
-      })
-    }
+  login = () => {
+    this.props.attemptLogin(this.state.eMail, this.state.password)
   }
 
   handleResetPassword = () => {
@@ -108,79 +71,12 @@ export default class LaunchScreen extends React.Component {
     })
   }
 
-  resetPassword = async () => {
-    try {
-      const url = 'https://dzheky.eu.auth0.com/dbconnections/change_password'
-      let data = {
-        client_id: key.auth0clientId,
-        email: this.state.forgottenEmail,
-        connection: 'Triple'
-      }
-      let fetchData = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      let response = await fetch(url, fetchData)
-      response = await response.json()
-      this.setState({
-        resetPasswordWaiting: false
-      }, () => {
-        if (response === "We've just sent you an email to reset your password.") {
-          this.modalError.showError('Мы отправили вам email для восстановления пароля!')
-        } else if (response.error === 'email or username are required.') {
-          this.modalError.showError('Введите ваш email!')
-        } else {
-          this.modalError.showError('Что-то пошло не так')
-        }
-      })
-    } catch (error) {
-      this.setState({
-        resetPasswordWaiting: false
-      }, () => {
-        this.error.showError('Что-то пошло не так')
-      })
-    }
+  resetPassword = () => {
+    this.props.ressetPassword(this.state.forgottenEmail)
   }
 
-  registration = async () => {
-    try {
-      const url = 'https://dzheky.eu.auth0.com/dbconnections/signup'
-      let data = {
-        client_id: key.auth0clientId,
-        email: this.state.eMail,
-        password: this.state.password,
-        connection: 'Triple'
-      }
-      let fetchData = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      let response = await fetch(url, fetchData)
-      response = await response.json()
-      this.setState({
-        registrationWaiting: false
-      }, () => {
-        if (response._id) {
-          this.login()
-        } else if (response.description === 'The user already exists.') {
-          this.error.showError('Пользователь с таким email уже существует!')
-        } else {
-          this.error.showError('Что-то пошло не так')
-        }
-      })
-    } catch (error) {
-      this.setState({
-        registrationWaiting: false
-      }, () => {
-        this.error.showError('Что-то пошло не так')
-      })
-    }
+  registration = () => {
+    this.props.attemptRegister(this.state.eMail, this.state.password)
   }
 
   onEmailChange = (text) => {
@@ -321,12 +217,12 @@ export default class LaunchScreen extends React.Component {
             })
           }}
         >
+          <TopError />
           <View style={[Styles.mainContainer, Styles.containerBackground]}>
-            <TopError ref={ref => { this.modalError = ref }} />
             <View>
               <Text style={Styles.passwordResetTitle}>ЗАБЫЛИ ПАРОЛЬ?</Text>
               <WideInput placeholder={'e-mail'} onChangeText={this.onForgotEmailChange} />
-              <WideButton waiting={this.state.resetPasswordWaiting} text={'ВСПОМНИТЬ'} onPress={this.handleResetPassword} style={{marginTop: 10}} />
+              <WideButton waiting={this.props.fetching} text={'ВСПОМНИТЬ'} onPress={this.handleResetPassword} style={{marginTop: 10}} />
             </View>
             {!this.state.keyboardUp ? <TouchableOpacity
               style={Styles.passwordResetContainer}
@@ -337,7 +233,6 @@ export default class LaunchScreen extends React.Component {
           </View>
         </Modal>
         <Image source={Images.logo} style={[Styles.logo, { opacity: this.state.keyboardUp ? 0 : 1 }]} />
-        <TopError ref={ref => { this.error = ref }} />
         <View style={Styles.section} >
           <View style={Styles.topButtonsContainer}>
             <TouchableOpacity
@@ -369,13 +264,13 @@ export default class LaunchScreen extends React.Component {
               <View>
                 <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
                 <WideInput placeholder={'пароль'} onChangeText={this.onPasswordChange} password />
-                <WideButton waiting={this.state.loginWaiting} text={'ВОЙТИ'} onPress={this.handleLogin} style={{marginTop: 10}} />
+                <WideButton waiting={this.props.fetching} text={'ВОЙТИ'} onPress={this.handleLogin} style={{marginTop: 10}} />
                 <WideButton text={'Войти через Facebook'} onPress={() => {}} transparent />
               </View>
               <View>
                 <WideInput placeholder={'e-mail'} onChangeText={this.onEmailChange} />
                 <WideInput placeholder={'пароль'} onChangeText={this.onPasswordChange} password />
-                <WideButton waiting={this.state.registrationWaiting} text={'ЗАРЕГИСТРИРОВАТЬСЯ'} onPress={this.handleRegistration} style={{marginTop: 10}} />
+                <WideButton waiting={this.props.fetching} text={'ЗАРЕГИСТРИРОВАТЬСЯ'} onPress={this.handleRegistration} style={{marginTop: 10}} />
                 <WideButton text={'Зарегистрироваться через Facebook'} onPress={() => {}} transparent />
               </View>
             </Swiper>
@@ -386,3 +281,21 @@ export default class LaunchScreen extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    fetching: state.login.fetching,
+    error: state.login.error,
+    token: state.login.token
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password)),
+    attemptRegister: (email, password) => dispatch(LoginActions.registerRequest(email, password)),
+    ressetPassword: (email) => dispatch(LoginActions.passwordResetRequest(email))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen)

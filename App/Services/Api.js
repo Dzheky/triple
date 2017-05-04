@@ -53,7 +53,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password' })
   const register = (email, password) => loginApi.post('dbconnections/signup', { client_id: Secrets.AUTH0_KEY, email, password, connection: 'Triple' })
-  const resetPassword = (email) => loginApi.post('change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
+  const resetPassword = (email) => loginApi.post('dbconnections/change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getEvents = () => api.get('eventList')
@@ -76,7 +76,10 @@ const create = (baseURL = 'https://api.github.com/') => {
     getRoot,
     getRate,
     getEvents,
-    getUser
+    getUser,
+    login,
+    register,
+    resetPassword
   }
 }
 

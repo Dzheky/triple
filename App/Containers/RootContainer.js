@@ -4,6 +4,7 @@ import NavigationRouter from '../Navigation/NavigationRouter'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
+import TopError from '../Components/TopError'
 
 // Styles
 import styles from './Styles/RootContainerStyles'
@@ -21,6 +22,7 @@ class RootContainer extends Component {
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle='dark-content' />
+        <TopError />
         <NavigationRouter />
       </View>
     )

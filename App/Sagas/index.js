@@ -13,7 +13,7 @@ import { OpenScreenTypes } from '../Redux/OpenScreenRedux'
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
-import { login } from './LoginSagas'
+import { login, register, passwordReset } from './LoginSagas'
 import { getUserAvatar } from './GithubSagas'
 import { openScreen } from './OpenScreenSagas'
 
@@ -29,10 +29,12 @@ export default function * root () {
   yield [
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
-    takeLatest(LoginTypes.LOGIN_REQUEST, login),
     takeLatest(OpenScreenTypes.OPEN_SCREEN, openScreen),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+    takeLatest(LoginTypes.LOGIN_REQUEST, login, api),
+    takeLatest(LoginTypes.REGISTER_REQUEST, register, api),
+    takeLatest(LoginTypes.PASSWORD_RESET_REQUEST, passwordReset, api)
   ]
 }

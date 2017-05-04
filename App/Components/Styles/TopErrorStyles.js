@@ -3,6 +3,7 @@ import { Fonts, Metrics, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
+    zIndex: 10000,
     position: 'absolute',
     backgroundColor: 'black',
     height: Metrics.buttonHeight,
