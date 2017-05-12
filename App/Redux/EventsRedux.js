@@ -29,13 +29,12 @@ export const request = (state) =>
 
 // successful temperature lookup
 export const success = (state, events) => {
-  const { avatar } = action
-  return state.merge({ fetching: false, error: null, events })
+  return state.merge({ fetching: false, error: null, events: events.events })
 }
 
 // failed to get the temperature
 export const failure = (state) =>
-  state.merge({ fetching: false, error: true, events: null })
+  state.merge({ fetching: false, error: true, events: [] })
 
 /* ------------- Hookup Reducers To Types ------------- */
 

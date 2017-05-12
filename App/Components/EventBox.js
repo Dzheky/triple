@@ -35,7 +35,7 @@ export default class EventBox extends React.Component {
           resizeMode={'cover'}
           source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/ed/78/cb/ed78cbf314edd1440f10465c8d4f219f.jpg'}}
         />
-        <Text style={styles.boldLabel}>{event.title.split(' - ')[0]}</Text>
+        <Text style={styles.boldLabel}>{event.title && event.title.split(' - ')[0]}</Text>
         <Text style={styles.underLabel}>США</Text>
         <View style={styles.greyLine} />
         <View style={styles.bottomContainer}>

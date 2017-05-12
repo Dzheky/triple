@@ -30,7 +30,6 @@ class EventsScreen extends React.Component {
   componentDidMount() {
     this.props.getEvents()
   }
-
   /* ***********************************************************
   * `renderRow` function -How each cell/row should be rendered
   * It's our best practice to place a single component here:
@@ -74,18 +73,22 @@ class EventsScreen extends React.Component {
           return 'Декабря'
       }
     }
-    let month1 = getMonth(event.start.split('-')[1])
-    let month2 = getMonth(event.end.split('-')[1])
-    let day1 = parseInt(event.start.split('-')[2])
-    let day2 = parseInt(event.end.split('-')[2])
-    let year1 = event.start.split('-')[0]
-    let year2 = event.end.split('-')[0]
-    if (month1 === month2 && year1 === year2) {
-      return `${day1} - ${day2} ${month1} ${year1}`
-    } else if (year1 === year2) {
-      return `${day1} ${month1} - ${day2} ${month2} ${year1}`
+    if(event.start && event.end) {
+      let month1 = getMonth(event.start.split('-')[1])
+      let month2 = getMonth(event.end.split('-')[1])
+      let day1 = parseInt(event.start.split('-')[2])
+      let day2 = parseInt(event.end.split('-')[2])
+      let year1 = event.start.split('-')[0]
+      let year2 = event.end.split('-')[0]
+      if (month1 === month2 && year1 === year2) {
+        return `${day1} - ${day2} ${month1} ${year1}`
+      } else if (year1 === year2) {
+        return `${day1} ${month1} - ${day2} ${month2} ${year1}`
+      } else {
+        return `${day1} ${month1} ${year1} - ${day2} ${month2} ${year2}`
+      }
     } else {
-      return `${day1} ${month1} ${year1} - ${day2} ${month2} ${year2}`
+      return ''
     }
   }
   /* ***********************************************************
