@@ -11,7 +11,7 @@ class FavoriteEvents extends React.Component {
 
   render () {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.listContent}>
         <KeyboardAvoidingView behavior='position'>
           <Text>FavoriteEvents Screen</Text>
         </KeyboardAvoidingView>

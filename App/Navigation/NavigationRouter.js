@@ -57,7 +57,7 @@ class NavigationRouter extends Component {
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navBar={CustomNavBar} navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
             <Scene initial key='launchScreen' component={LaunchScreen} title="Login" hideNavBar hideTabBar/>
-            <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor: Colors.snow}} selectedIconStyle={{backgroundColor: Colors.yellow}}>
+            <Scene key="tabbar" tabs={true} tabBarStyle={Styles.tabbarContainer} selectedIconStyle={{backgroundColor: Colors.yellow}}>
               <Scene key="Profile" title="Профиль" icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='ProfileScreen' component={Profile} hideNavBar={false} />
               </Scene>

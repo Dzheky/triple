@@ -14,11 +14,7 @@ export function * login (api, { username, password }, ) {
     if(response.ok && response.data.access_token) {
       const token = path(['data', 'access_token'], response)
       yield put(LoginActions.loginSuccess(token, username))
-      try {
-        yield Actions.tabbar({type: ActionConst.RESET})
-      } catch(error) {
-        console.tron.display({name: 'TRY', message: error})
-      }
+      yield Actions.tabbar({type: ActionConst.RESET})
       yield put(ErrorMessagesActions.showMessage('Вы вошли как '+username))
     } else {
       let message = response.data.error_description === 'Wrong email or password.' ? 'Неправильный email или пароль!' : 'Что-то пошло не так!'

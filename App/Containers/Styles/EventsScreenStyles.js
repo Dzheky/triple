@@ -5,7 +5,8 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    paddingTop: Metrics.baseMargin,
+    marginTop: Metrics.navBarHeight,
+    paddingBottom: Metrics.bottomNavigation,
     backgroundColor: Colors.background
   },
   row: {
@@ -60,6 +61,13 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin
   },
   listContent: {
-    marginTop: Metrics.baseMargin
+    paddingTop: Metrics.smallMargin
+  },
+  activityIndicatorContainer: {
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight - Metrics.navBarHeight - Metrics.bottomNavigation,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

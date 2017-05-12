@@ -7,7 +7,10 @@ export default StyleSheet.create({
     backgroundColor: Colors.lightGrey,
     marginVertical: Metrics.smallMargin,
     marginHorizontal: Metrics.baseMargin,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
   },
   likeContainer: {
     position: 'absolute',

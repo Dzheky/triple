@@ -18,6 +18,7 @@ const metrics = {
   screenHeight: width < height ? height : width,
   navBarHeight: 64,
   buttonRadius: 4,
+  bottomNavigation: 50,
   icons: {
     tiny: 15,
     small: 20,

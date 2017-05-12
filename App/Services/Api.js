@@ -10,6 +10,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   // Create and configure an apisauce-based api object.
   //
+
+  // EXAMPLE //
   const api = apisauce.create({
     // base URL is read from the "constructor"
     baseURL,
@@ -18,6 +20,14 @@ const create = (baseURL = 'https://api.github.com/') => {
       'Cache-Control': 'no-cache'
     },
     // 10 second timeout...
+    timeout: 10000
+  })
+
+  const event = apisauce.create({
+    baseURL: 'https://exmaple.com',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     timeout: 10000
   })
 
@@ -35,6 +45,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   if (__DEV__ && console.tron) {
     api.addMonitor(console.tron.apisauce)
     loginApi.addMonitor(console.tron.apisauce)
+    event.addMonitor(console.tron.apisauce)
   }
 
   // ------
@@ -51,10 +62,16 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  console.tron.log(Secrets.AUTH0_KEY)
+
+  // LOGIN //
   const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password' })
   const register = (email, password) => loginApi.post('dbconnections/signup', { client_id: Secrets.AUTH0_KEY, email, password, connection: 'Triple' })
   const resetPassword = (email) => loginApi.post('dbconnections/change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
+
+  // GET EVENTS //
+  const events = () => event.get('events')
+
+  // EXAMPLE //
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getEvents = () => api.get('eventList')
@@ -78,6 +95,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     getRate,
     getEvents,
     getUser,
+    events,
     login,
     register,
     resetPassword

@@ -24,5 +24,11 @@ export default {
   text: {
     color: Colors.grey,
     fontSize: 11
+  },
+  tabbarContainer: {
+    backgroundColor: Colors.snow,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: -0.5 },
+    shadowOpacity: 0.1
   }
 }

@@ -2,17 +2,36 @@ export default {
   // Functions return fixtures
   login: (username, password) => {
     return {
-      access_token: 'tesetAccessToken'
+      ok: true,
+      data: {
+        access_token: 'tesetAccessToken'
+      }
     }
   },
   register: (email, password) => {
     return {
-      _id: 'testId'
+      ok: true,
+      data: {
+        _id: 'testId'
+      }
     }
   },
   resetPassword: (email) => {
-    return "We've just sent you an email to reset your password."
+    return {
+      ok: true,
+      data: "We've just sent you an email to reset your password."
+    }
   },
+  events: () => {
+    return {
+      ok: true,
+      data: require('../Fixtures/events.json')
+    }
+  },
+
+
+
+  // EXAMPLE //
   getRoot: () => {
     return {
       ok: true,
@@ -23,12 +42,6 @@ export default {
     return {
       ok: true,
       data: require('../Fixtures/rateLimit.json')
-    }
-  },
-  getEvents: () => {
-    return {
-      ok: true,
-      data: require('../Fixtures/events.json')
     }
   },
   getUser: (username) => {

@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, ListView, StatusBar, Text } from 'react-native'
+import { View, ListView, StatusBar, Text, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 import { Colors } from '../Themes/'
-import AlertMessage from '../Components/AlertMessage'
 import EventBox from '../Components/EventBox'
+import EventsActions from '../Redux/EventsRedux'
 // Styles
 import styles from './Styles/EventsScreenStyles'
 
@@ -23,9 +23,12 @@ class EventsScreen extends React.Component {
 
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(props.results),
-      page:'second'
+      dataSource: ds.cloneWithRows(props.events || [])
     }
+  }
+
+  componentDidMount() {
+    this.props.getEvents()
   }
 
   /* ***********************************************************
@@ -95,9 +98,9 @@ class EventsScreen extends React.Component {
   * e.g.
   *************************************************************/
   componentWillReceiveProps (newProps) {
-    if (newProps.results) {
+    if (newProps.events) {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newProps.results)
+        dataSource: this.state.dataSource.cloneWithRows(newProps.events)
       })
     }
   }
@@ -116,7 +119,9 @@ class EventsScreen extends React.Component {
           barStyle='dark-content'
           translucent
         />
-        <AlertMessage title='Nothing to See Here, Move Along' show={this.noRowData()} />
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
+        </View>
         <ListView
           contentContainerStyle={styles.listContent}
           dataSource={this.state.dataSource}
@@ -132,8 +137,15 @@ class EventsScreen extends React.Component {
 const mapStateToProps = (state) => {
   return {
     searchTerm: state.search.searchTerm,
-    results: state.search.results
+    events: state.events.events,
+    fetching: state.events.fetching
   }
 }
 
-export default connect(mapStateToProps)(EventsScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getEvents: () => dispatch(EventsActions.eventsRequest())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsScreen)
