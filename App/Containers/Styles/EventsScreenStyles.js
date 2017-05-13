@@ -30,6 +30,19 @@ export default StyleSheet.create({
     fontSize: Fonts.size.small,
     marginHorizontal: Metrics.baseMargin
   },
+  searchIcon: {
+    alignSelf: 'center',
+    color: Colors.yellow,
+    backgroundColor: Colors.transparent
+  },
+  iconText: {
+    marginTop: -Metrics.smallMargin,
+    backgroundColor: Colors.transparent,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.h5,
+    fontWeight: 'bold',
+    color: Colors.yellow,
+  },
   greyLine: {
     height: 1,
     backgroundColor: Colors.grey,

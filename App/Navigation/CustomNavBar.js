@@ -25,13 +25,13 @@ class CustomNavBar extends React.Component {
   }
 
   onSearch = (searchTerm) => {
-    this.props.performSearch(searchTerm)
+    this.props.performSearch(searchTerm, this.props.events)
   }
 
   renderMiddle () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     if (this.state.showSearchBar) {
-      return <SearchBar onSearch={this.props.performSearch} searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
+      return <SearchBar onSearch={this.onSearch } searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
     } else {
       return (
         <View style={styles.middleTextContainer}>
@@ -97,13 +97,14 @@ CustomNavBar.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    searchTerm: state.search.searchTerm
+    searchTerm: state.search.searchTerm,
+    events: state.events.events
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    performSearch: (searchTerm) => dispatch(SearchActions.search(searchTerm)),
+    performSearch: (searchTerm, events) => dispatch(SearchActions.search(searchTerm, events)),
     cancelSearch: () => dispatch(SearchActions.cancelSearch())
   }
 }

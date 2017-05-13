@@ -1,9 +1,10 @@
 import React from 'react'
 import { View, ListView, StatusBar, Text, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
-import { Colors } from '../Themes/'
+import { Colors, Metrics } from '../Themes/'
 import EventBox from '../Components/EventBox'
 import EventsActions from '../Redux/EventsRedux'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 // Styles
 import styles from './Styles/EventsScreenStyles'
 
@@ -103,7 +104,7 @@ class EventsScreen extends React.Component {
   componentWillReceiveProps (newProps) {
     if (newProps.events) {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newProps.events)
+        dataSource: this.state.dataSource.cloneWithRows(newProps.results || newProps.events)
       })
     }
   }
@@ -112,6 +113,21 @@ class EventsScreen extends React.Component {
   // returns true if the dataSource is empty
   noRowData () {
     return this.state.dataSource.getRowCount() === 0
+  }
+
+  renderActivity = () => {
+    if(this.noRowData() && this.props.fetching) {
+      return <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
+    } else if(this.noRowData()) {
+      return (
+        <View style={styles.iconCover}>
+          <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
+          <Text style={styles.iconText}>Нема!</Text>
+        </View>
+      )
+    } else {
+      return null
+    }
   }
 
   render () {
@@ -123,7 +139,7 @@ class EventsScreen extends React.Component {
           translucent
         />
         <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
+          {this.renderActivity()}
         </View>
         <ListView
           contentContainerStyle={styles.listContent}
@@ -141,7 +157,8 @@ const mapStateToProps = (state) => {
   return {
     searchTerm: state.search.searchTerm,
     events: state.events.events,
-    fetching: state.events.fetching
+    fetching: state.events.fetching,
+    results: state.search.results
   }
 }
 
