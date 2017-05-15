@@ -8,20 +8,20 @@ import { Metrics } from '../Themes/'
 
 class TopError extends React.Component {
   state = {
-    top: new Animated.Value(-Metrics.buttonHeight),
+    top: new Animated.Value(-Metrics.buttonHeight)
   }
 
   static propTypes = {
     onPress: PropTypes.func
   }
 
-  componentWillReceiveProps(newProps) {
-    if(this.props.showErrorMessage === false && newProps.showErrorMessage === true) {
+  componentWillReceiveProps (newProps) {
+    if (this.props.showErrorMessage === false && newProps.showErrorMessage === true) {
       this.showError()
       setTimeout(() => {
         this.props.hide()
       }, 2000)
-    } else if (this.props.showErrorMessage === true && newProps.showErrorMessage == false) {
+    } else if (this.props.showErrorMessage === true && newProps.showErrorMessage === false) {
       this.hideError()
     }
   }

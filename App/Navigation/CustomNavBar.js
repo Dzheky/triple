@@ -31,7 +31,7 @@ class CustomNavBar extends React.Component {
   renderMiddle () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     if (this.state.showSearchBar) {
-      return <SearchBar onSearch={this.onSearch } searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
+      return <SearchBar onSearch={this.onSearch} searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
     } else {
       return (
         <View style={styles.middleTextContainer}>

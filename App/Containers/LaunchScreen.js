@@ -16,8 +16,6 @@ import { connect } from 'react-redux'
 import LoginActions from '../Redux/LoginRedux'
 import TopError from '../Components/TopError'
 import Swiper from 'react-native-swiper'
-import key from '../../apiKeys'
-import { Actions, ActionConst } from 'react-native-router-flux'
 
 // Styles
 import Styles from './Styles/LaunchScreenStyles'

@@ -41,7 +41,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.h5,
     fontWeight: 'bold',
-    color: Colors.yellow,
+    color: Colors.yellow
   },
   greyLine: {
     height: 1,

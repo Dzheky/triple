@@ -1,4 +1,4 @@
-import { takeLatest } from 'redux-saga'
+import { takeLatest } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
@@ -9,7 +9,7 @@ import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { LoginTypes } from '../Redux/LoginRedux'
 import { OpenScreenTypes } from '../Redux/OpenScreenRedux'
-import { EventsTypes } from  '../Redux/EventsRedux'
+import { EventsTypes } from '../Redux/EventsRedux'
 
 /* ------------- Sagas ------------- */
 

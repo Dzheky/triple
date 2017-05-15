@@ -1,19 +1,19 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/EventBoxStyle'
+import EventActions from '../Redux/EventsRedux'
+import { connect } from 'react-redux'
 import { Colors, Metrics } from '../Themes/'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-export default class EventBox extends React.Component {
-
-  state = {
-    pressed: false
-  }
+class EventBox extends React.Component {
 
   onLikePress = () => {
-    this.setState({
-      pressed: !this.state.pressed
-    })
+    if (this.props.like) {
+      this.props.iDislike(this.props.idNumber, this.props.tokenId, this.props.userId)
+    } else {
+      this.props.iLike(this.props.idNumber, this.props.tokenId, this.props.userId)
+    }
   }
 
   render () {
@@ -21,7 +21,7 @@ export default class EventBox extends React.Component {
     return (
       <View style={styles.row}>
         <TouchableOpacity
-          style={[styles.likeContainer, { backgroundColor: this.state.pressed ? Colors.yellow : Colors.lightGrey }]}
+          style={[styles.likeContainer, { backgroundColor: this.props.like ? Colors.yellow : Colors.lightGrey }]}
           onPress={this.onLikePress}
         >
           <Icon name='md-heart-outline'
@@ -57,3 +57,19 @@ EventBox.propTypes = {
 // EventBox.defaultProps = {
 //   someSetting: false
 // }
+
+const mapStateToProps = (state) => {
+  return {
+    tokenId: state.events.tokenId,
+    userId: state.events.userId
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    iLike: (ids, tokenId, userId) => dispatch(EventActions.like(ids, tokenId, userId)),
+    iDislike: (ids, tokenId, userId) => dispatch(EventActions.dislike(ids, tokenId, userId))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventBox)

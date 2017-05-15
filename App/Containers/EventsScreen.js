@@ -28,7 +28,7 @@ class EventsScreen extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getEvents()
   }
   /* ***********************************************************
@@ -41,7 +41,7 @@ class EventsScreen extends React.Component {
   renderRow (event) {
     let date = this.formatDate(event)
     return (
-      <EventBox date={date} event={event} />
+      <EventBox date={date} event={event} like={event.like} idNumber={event.id} />
     )
   }
 
@@ -74,7 +74,7 @@ class EventsScreen extends React.Component {
           return 'Декабря'
       }
     }
-    if(event.start && event.end) {
+    if (event.start && event.end) {
       let month1 = getMonth(event.start.split('-')[1])
       let month2 = getMonth(event.end.split('-')[1])
       let day1 = parseInt(event.start.split('-')[2])
@@ -116,9 +116,9 @@ class EventsScreen extends React.Component {
   }
 
   renderActivity = () => {
-    if(this.noRowData() && this.props.fetching) {
+    if (this.noRowData() && this.props.fetching) {
       return <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
-    } else if(this.noRowData()) {
+    } else if (this.noRowData()) {
       return (
         <View style={styles.iconCover}>
           <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
@@ -158,7 +158,8 @@ const mapStateToProps = (state) => {
     searchTerm: state.search.searchTerm,
     events: state.events.events,
     fetching: state.events.fetching,
-    results: state.search.results
+    results: state.search.results,
+    likes: state.events.favorites
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { Scene, Router, TabView } from 'react-native-router-flux'
+import { Scene, Router } from 'react-native-router-flux'
 import Styles from './Styles/NavigationContainerStyles'
 import NavigationDrawer from './NavigationDrawer'
 import CustomNavBar from './CustomNavBar'
@@ -20,7 +20,7 @@ import Profile from '../Containers/ProfileScreen'
 
 const TabIcon = (props) => {
   let icon
-  switch(props.title) {
+  switch (props.title) {
     case 'Профиль':
       icon = props.selected ? 'ios-person' : 'ios-person-outline'
       break
@@ -31,7 +31,7 @@ const TabIcon = (props) => {
       icon = props.selected ? 'ios-calendar' : 'ios-calendar-outline'
       break
     case 'Избранное':
-      icon = props.selected ? 'ios-heart' :'ios-heart-outline'
+      icon = props.selected ? 'ios-heart' : 'ios-heart-outline'
       break
     case 'Проффи':
       icon = props.selected ? 'ios-star' : 'ios-star-outline'
@@ -39,15 +39,15 @@ const TabIcon = (props) => {
     default:
       icon = 'ios-star'
   }
-  return(
-  <View style={Styles.iconsCover}>
-    <Icon name={icon}
-      size={Metrics.icons.small}
-      color={props.selected ? 'black' : Colors.grey}
-      style={Styles.navButtonLeft}
-    />
-    <Text style={[Styles.text, props.selected && { color: 'black' }]}>{props.title}</Text>
-  </View>)
+  return (
+    <View style={Styles.iconsCover}>
+      <Icon name={icon}
+        size={Metrics.icons.small}
+        color={props.selected ? 'black' : Colors.grey}
+        style={Styles.navButtonLeft}
+      />
+      <Text style={[Styles.text, props.selected && { color: 'black' }]}>{props.title}</Text>
+    </View>)
 }
 
 class NavigationRouter extends Component {
@@ -56,21 +56,21 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navBar={CustomNavBar} navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene initial key='launchScreen' component={LaunchScreen} title="Login" hideNavBar hideTabBar/>
-            <Scene key="tabbar" tabs={true} tabBarStyle={Styles.tabbarContainer} selectedIconStyle={{backgroundColor: Colors.yellow}}>
-              <Scene key="Profile" title="Профиль" icon={TabIcon} navBar={CustomNavBar}>
+            <Scene initial key='launchScreen' component={LaunchScreen} title='Login' hideNavBar hideTabBar />
+            <Scene key='tabbar' tabs tabBarStyle={Styles.tabbarContainer} selectedIconStyle={{backgroundColor: Colors.yellow}}>
+              <Scene key='Profile' title='Профиль' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='ProfileScreen' component={Profile} hideNavBar={false} />
               </Scene>
-              <Scene key="Rang" title="Ранги" icon={TabIcon} navBar={CustomNavBar}>
+              <Scene key='Rang' title='Ранги' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='RangScreen' component={PointSearch} hideNavBar={false} />
               </Scene>
-              <Scene initial key="Events" title="Ивенты" icon={TabIcon} navBar={CustomNavBar}>
+              <Scene initial key='Events' title='Ивенты' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='EventsScreen' component={EventsScreen} hideNavBar={false} />
               </Scene>
-              <Scene key="Favorite" title="Избранное" icon={TabIcon} navBar={CustomNavBar}>
+              <Scene key='Favorite' title='Избранное' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='FavoriteScreen' component={FavoriteEvents} hideNavBar={false} />
               </Scene>
-              <Scene key="TopDancers" title="Проффи" icon={TabIcon} navBar={CustomNavBar}>
+              <Scene key='TopDancers' title='Проффи' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='TopDancersScreen' component={TopDancers} hideNavBar={false} />
               </Scene>
             </Scene>

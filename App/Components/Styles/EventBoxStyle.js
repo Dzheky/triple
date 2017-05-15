@@ -10,7 +10,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.3
   },
   likeContainer: {
     position: 'absolute',

@@ -29,8 +29,6 @@ export default {
     }
   },
 
-
-
   // EXAMPLE //
   getRoot: () => {
     return {

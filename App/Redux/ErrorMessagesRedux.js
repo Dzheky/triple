@@ -29,7 +29,6 @@ export const hideMessage = (state) => {
   return state.merge({ showErrorMessage: false })
 }
 
-
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {

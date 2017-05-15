@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 import Secrets from 'react-native-config'
 
-// our "constructor"
+// our 'constructor'
 const create = (baseURL = 'https://api.github.com/') => {
   // ------
   // STEP 1
@@ -13,7 +13,7 @@ const create = (baseURL = 'https://api.github.com/') => {
 
   // EXAMPLE //
   const api = apisauce.create({
-    // base URL is read from the "constructor"
+    // base URL is read from the 'constructor'
     baseURL,
     // here are some default headers
     headers: {
@@ -24,7 +24,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   })
 
   const event = apisauce.create({
-    baseURL: 'https://exmaple.com',
+    baseURL: 'https://wcsserver-dzheky.c9users.io',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -32,7 +32,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   })
 
   const loginApi = apisauce.create({
-    baseURL:'https://dzheky.eu.auth0.com/',
+    baseURL: 'https://dzheky.eu.auth0.com/',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -54,7 +54,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   // Define some functions that call the api.  The goal is to provide
   // a thin wrapper of the api layer providing nicer feeling functions
-  // rather than "get", "post" and friends.
+  // rather than 'get', 'post' and friends.
   //
   // I generally don't like wrapping the output at this level because
   // sometimes specific actions need to be take on `403` or `401`, etc.
@@ -64,9 +64,22 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
 
   // LOGIN //
-  const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password' })
+  const login = (username, password) => loginApi.post('oauth/ro', { client_id: Secrets.AUTH0_KEY, username, password, connection: 'Triple', grant_type: 'password', scope: 'openid' })
   const register = (email, password) => loginApi.post('dbconnections/signup', { client_id: Secrets.AUTH0_KEY, email, password, connection: 'Triple' })
   const resetPassword = (email) => loginApi.post('dbconnections/change_password', { client_id: Secrets.AUTH0_KEY, email, connection: 'Triple' })
+
+  // METADATA MANEGMENT //
+  const getUserInfo = (token) => loginApi.get('userinfo', {},
+    {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+  const updateMetaData = (userID, idToken, data) => loginApi.patch('api/v2/users/' + userID,
+    {
+      'user_metadata': data
+    },
+    {
+      headers: { 'Authorization': `Bearer ${idToken}` }
+    })
 
   // GET EVENTS //
   const events = () => event.get('events')
@@ -95,6 +108,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     getRate,
     getEvents,
     getUser,
+    getUserInfo,
+    updateMetaData,
     events,
     login,
     register,
