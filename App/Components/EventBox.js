@@ -1,14 +1,15 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import styles from './Styles/EventBoxStyle'
+import normalStyles from './Styles/EventBoxStyle'
 import favoriteStyles from './Styles/EventBoxFavoriteStyle'
 import EventActions from '../Redux/EventsRedux'
 import { connect } from 'react-redux'
 import { Colors, Metrics } from '../Themes/'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-class Num extends React.Component {
+class Num extends React.Component {ß
   render () {
+    let styles = normalStyles
     return (
       <View style={styles.numberContainer}>
         <View style={styles.numberMiddleLine} />
@@ -21,10 +22,11 @@ class Num extends React.Component {
 class NumSet extends React.Component {
 
   renderNumbers = (number) => {
-    let numberString = number.toString()
+    let numberString = number
     if (numberString < 10) {
       numberString = '0' + numberString
     }
+    numberString = numberString.toString()
     return numberString.split('').map((element) => {
       return (
         <Num number={element} />
@@ -33,6 +35,7 @@ class NumSet extends React.Component {
   }
 
   render () {
+    let styles = normalStyles
     return (
       <View style={styles.numberSetContainer}>
         <Text style={styles.numberSetTitle}>{this.props.title}</Text>
@@ -101,6 +104,7 @@ class EventBox extends React.Component {
   }
 
   renderTime = () => {
+    let styles = normalStyles
     return (
       <View style={styles.timeContainer}>
         <NumSet number={this.state.days} title={'Дней'} />
@@ -116,6 +120,7 @@ class EventBox extends React.Component {
 
   render () {
     let event = this.props.event
+    let styles = this.props.favoriteScreen ? favoriteStyles : normalStyles
     return (
       <View style={styles.row}>
         {this.props.favoriteScreen && this.renderTime()}
