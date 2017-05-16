@@ -6,7 +6,7 @@ import EventBox from '../Components/EventBox'
 import EventsActions from '../Redux/EventsRedux'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 // Styles
-import styles from './Styles/EventsScreenStyles'
+import styles from './Styles/FavoriteEventsScreenStyle'
 
 class EventsScreen extends React.Component {
 
@@ -24,7 +24,9 @@ class EventsScreen extends React.Component {
     let events = this.filter(props.events, props.likes)
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(events)
+      dataSource: ds.cloneWithRows(events),
+      loaded: [],
+      timer: false
     }
   }
 
@@ -33,6 +35,10 @@ class EventsScreen extends React.Component {
       return event.like
     })
     return result
+  }
+
+  imageLoaded = (id) => {
+    this.props.fetchingDone()
   }
 
   componentDidMount () {
@@ -48,7 +54,7 @@ class EventsScreen extends React.Component {
   renderRow (event) {
     let date = this.formatDate(event)
     return (
-      <EventBox date={date} event={event} like={this.props.likes.indexOf(event.id) !== -1} idNumber={event.id} />
+      <EventBox date={date} event={event} favoriteScreen loaded={this.imageLoaded} like={this.props.likes.indexOf(event.id) !== -1} idNumber={event.id} />
     )
   }
 
@@ -124,13 +130,19 @@ class EventsScreen extends React.Component {
   }
 
   renderActivity = () => {
-    if (this.noRowData() && this.props.fetching) {
-      return <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
+    if (this.props.fetching) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator size={'large'} color={Colors.grey} animating={this.props.fetching} />
+        </View>
+      )
     } else if (this.noRowData()) {
       return (
-        <View style={styles.iconCover}>
-          <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
-          <Text style={styles.iconText}>Нема!</Text>
+        <View style={styles.activityIndicatorContainer}>
+          <View style={styles.iconCover}>
+            <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
+            <Text style={styles.iconText}>Нема!</Text>
+          </View>
         </View>
       )
     } else {
@@ -146,9 +158,7 @@ class EventsScreen extends React.Component {
           barStyle='dark-content'
           translucent
         />
-        <View style={styles.activityIndicatorContainer}>
-          {this.renderActivity()}
-        </View>
+        {this.renderActivity()}
         <ListView
           contentContainerStyle={styles.listContent}
           dataSource={this.state.dataSource}
@@ -173,7 +183,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEvents: () => dispatch(EventsActions.eventsRequest())
+    getEvents: () => dispatch(EventsActions.eventsRequest()),
+    fetchingDone: () => dispatch(EventsActions.fetchingDone())
   }
 }
 

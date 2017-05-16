@@ -24,7 +24,28 @@ class EventsScreen extends React.Component {
 
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(props.events || [])
+      dataSource: ds.cloneWithRows(props.events || []),
+      loaded: [],
+      timer: false
+    }
+  }
+
+  imageLoaded = (id) => {
+    let arr = this.state.loaded
+    if(arr.includes(0) && arr.includes(1) && arr.includes(2) && this.props.fetching) {
+      this.props.fetchingDone()
+    } else if(this.props.fetching) {
+      this.setState({
+        loaded: [...this.state.loaded, id]
+      })
+    }
+    if(!this.state.timer) {
+      this.setState({
+        timer: true
+      })
+      setTimeout(() => {
+        this.props.fetchingDone()
+      }, 4000)
     }
   }
 
@@ -40,8 +61,9 @@ class EventsScreen extends React.Component {
   *************************************************************/
   renderRow (event) {
     let date = this.formatDate(event)
+    let id = this.props.events ? this.props.events.indexOf(event) : event.id
     return (
-      <EventBox date={date} event={event} like={event.like} idNumber={event.id} />
+      <EventBox date={date} loaded={this.imageLoaded} event={event} like={event.like} idNumber={event.id} id={id} />
     )
   }
 
@@ -116,13 +138,19 @@ class EventsScreen extends React.Component {
   }
 
   renderActivity = () => {
-    if (this.noRowData() && this.props.fetching) {
-      return <ActivityIndicator size={'large'} color={Colors.grey} animating={this.noRowData()} />
+    if (this.props.fetching) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator size={'large'} color={Colors.grey} animating={this.props.fetching} />
+        </View>
+      )
     } else if (this.noRowData()) {
       return (
-        <View style={styles.iconCover}>
-          <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
-          <Text style={styles.iconText}>Нема!</Text>
+        <View style={styles.activityIndicatorContainer}>
+          <View style={styles.iconCover}>
+            <Icon name='emoticon-sad' size={Metrics.icons.medium} style={styles.searchIcon} />
+            <Text style={styles.iconText}>Нема!</Text>
+          </View>
         </View>
       )
     } else {
@@ -138,14 +166,13 @@ class EventsScreen extends React.Component {
           barStyle='dark-content'
           translucent
         />
-        <View style={styles.activityIndicatorContainer}>
-          {this.renderActivity()}
-        </View>
+        {this.renderActivity()}
         <ListView
           contentContainerStyle={styles.listContent}
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}
-          pageSize={15}
+          pageSize={5}
+          initialListSize={3}
           enableEmptySections
         />
       </View>
@@ -165,7 +192,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEvents: () => dispatch(EventsActions.eventsRequest())
+    getEvents: () => dispatch(EventsActions.eventsRequest()),
+    fetchingDone: () => dispatch(EventsActions.fetchingDone())
   }
 }
 

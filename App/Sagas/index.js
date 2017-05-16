@@ -18,6 +18,7 @@ import { login, register, passwordReset } from './LoginSagas'
 import { getUserAvatar } from './GithubSagas'
 import { openScreen } from './OpenScreenSagas'
 import { events } from './EventsSagas'
+import { like, dislike } from './LikeButtonSagas'
 
 /* ------------- API ------------- */
 
@@ -33,12 +34,10 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
     takeLatest(OpenScreenTypes.OPEN_SCREEN, openScreen),
 
-    // some sagas receive extra parameters in addition to an action
-    // EXAMPLE //
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-
     // EVENTS //
     takeLatest(EventsTypes.EVENTS_REQUEST, events, api),
+    takeLatest(EventsTypes.LIKE, like, api),
+    takeLatest(EventsTypes.DISLIKE, dislike, api),
 
     // LOGIN //
     takeLatest(LoginTypes.LOGIN_REQUEST, login, api),

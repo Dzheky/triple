@@ -18,7 +18,7 @@ export function * login (api, {username, password}) {
     const userId = path(['data', 'user_id'], userInfo)
     const userMetaData = path(['data', 'user_metadata'], userInfo)
     if (response.ok && response.data.access_token) {
-      if (userMetaData.favorites) {
+      if (userMetaData && userMetaData.favorites) {
         yield put(EventsActions.setLikes(userMetaData.favorites))
       }
       yield put(LoginActions.loginSuccess(token, username, tokenId, userId, userMetaData))

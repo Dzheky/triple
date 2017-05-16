@@ -80,6 +80,8 @@ export default StyleSheet.create({
     width: Metrics.screenWidth,
     height: Metrics.screenHeight - Metrics.navBarHeight - Metrics.bottomNavigation,
     position: 'absolute',
+    zIndex: 100,
+    backgroundColor: Colors.snow,
     justifyContent: 'center',
     alignItems: 'center'
   }
