@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/EventBoxStyle'
+import favoriteStyles from './Styles/EventBoxFavoriteStyle'
 import EventActions from '../Redux/EventsRedux'
 import { connect } from 'react-redux'
 import { Colors, Metrics } from '../Themes/'
