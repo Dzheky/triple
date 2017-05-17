@@ -1,7 +1,8 @@
 const type = {
   base: 'Avenir-Book',
   bold: 'Avenir-Black',
-  emphasis: 'HelveticaNeue-Italic'
+  emphasis: 'HelveticaNeue-Italic',
+  cool: 'AmericanTypewriter-Light'
 }
 
 const size = {
@@ -58,4 +59,3 @@ export default {
   size,
   style
 }
-

@@ -14,14 +14,6 @@ ExamplesRegistry.addComponentExample('Full Button', () =>
 )
 
 export default class WideButton extends React.Component {
-  static propTypes = {
-    onPress: PropTypes.func.isRequired,
-    text: PropTypes.string.isRequired,
-    waiting: PropTypes.bool,
-    style: PropTypes.object,
-    fontStyle: PropTypes.object,
-    transparent: PropTypes.bool
-  }
 
   render () {
     return (

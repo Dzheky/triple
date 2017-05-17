@@ -1,11 +1,38 @@
 {
   "events": [
     {
-      "end": "2017-05-08",
+      "address": "Stockholm, Rökerigatan 21, Stockholm 121 62, Sweden",
+      "country": "Sweden",
+      "end": "2017-10-23",
+      "guests": [
+        "Jordan Frisbee",
+        "Tatiana Mollmann",
+        "Maxence Martin",
+        "Virginie Grondin",
+        "Ludovic Pelegrin Pardou",
+        "Natalyia Kharlanova",
+        "Browly Adjavon"
+      ],
+      "hotel_url": "http://www.snowcs.se/venue.php",
       "id": 0,
-      "start": "2017-05-04",
-      "title": "SwingDiego (The Superbowl of Swing) - Registry Event",
-      "url": "http://www.swingdiego.com/"
+      "picture": "https://cdn-az.allevents.in/banners/fd30a5ecbf87c378a7432ae13f06f0fb",
+      "prices": [
+        {
+          "price": "1100 SEK",
+          "until": "2017-05-31"
+        },
+        {
+          "price": "1400 SEK",
+          "until": "2017-08-31"
+        },
+        {
+          "price": "1700 SEK"
+        }
+      ],
+      "registration": "http://www.snowcs.se/register.php",
+      "start": "2017-10-20",
+      "title": "Scandinavian Open WCS - Registry Event",
+      "url": "http://www.snowcs.se"
     },
     {
       "end": "2017-05-08",

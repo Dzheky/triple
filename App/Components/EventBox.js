@@ -1,52 +1,13 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import normalStyles from './Styles/EventBoxStyle'
 import favoriteStyles from './Styles/EventBoxFavoriteStyle'
 import EventActions from '../Redux/EventsRedux'
 import { connect } from 'react-redux'
 import { Actions, ActionConst } from 'react-native-router-flux'
 import { Colors, Metrics } from '../Themes/'
+import Timer from './Timer'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-class Num extends React.Component {ß
-  render () {
-    let styles = normalStyles
-    return (
-      <View style={styles.numberContainer}>
-        <View style={styles.numberMiddleLine} />
-        <Text style={styles.number}>{this.props.number}</Text>
-      </View>
-    )
-  }
-}
-
-class NumSet extends React.Component {
-
-  renderNumbers = (number) => {
-    let numberString = number
-    if (numberString < 10) {
-      numberString = '0' + numberString
-    }
-    numberString = numberString.toString()
-    return numberString.split('').map((element, id) => {
-      return (
-        <Num number={element} key={'NumSet' + id}/>
-      )
-    })
-  }
-
-  render () {
-    let styles = normalStyles
-    return (
-      <View style={styles.numberSetContainer}>
-        <Text style={styles.numberSetTitle}>{this.props.title}</Text>
-        <View style={styles.numberSet}>
-          {this.renderNumbers(this.props.number)}
-        </View>
-      </View>
-    )
-  }
-}
 
 class EventBox extends React.Component {
 
@@ -55,25 +16,6 @@ class EventBox extends React.Component {
     minutes: 0,
     hours: 0,
     days: 0
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.getDifference(this.props.event.start)
-    }, 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps !== this.props) {
-      clearInterval(this.interval)
-      this.interval = setInterval(() => {
-        this.getDifference(this.props.event.start)
-      }, 1000)
-    }
   }
 
   onLikePress = () => {
@@ -88,42 +30,11 @@ class EventBox extends React.Component {
     this.props.loaded && this.props.loaded(this.props.id)
   }
 
-  getDifference = (start) => {
-    let first = new Date(start)
-    let second = new Date()
-    let seconds = parseInt((first - second) / 1000 % 60)
-    let minutes = parseInt((first - second) / 1000 / 60 % 60)
-    let hours = parseInt((((first - second) / 1000 / 60 / 60) - 2) % 24)
-    let days = parseInt((first - second) / 1000 / 60 / 60 / 24)
-    if(seconds < 0) {
-      clearInterval(this.interval)
-      this.setState({
-        seconds: 0,
-        minutes: 0,
-        hours: 0,
-        days: 0
-      })
-    } else {
-      this.setState({
-        seconds,
-        minutes,
-        hours,
-        days
-      })
-    }
-  }
-
   renderTime = () => {
     let styles = normalStyles
     return (
       <View style={styles.timeContainer}>
-        <NumSet number={this.state.days} title={'Дней'} />
-        <Text style={styles.dots}>:</Text>
-        <NumSet number={this.state.hours} title={'Часов'} />
-        <Text style={styles.dots}>:</Text>
-        <NumSet number={this.state.minutes} title={'Минут'} />
-        <Text style={styles.dots}>:</Text>
-        <NumSet number={this.state.seconds} title={'Секунд'} />
+        <Timer start={this.props.event.start} />
       </View>
     )
   }
@@ -135,36 +46,40 @@ class EventBox extends React.Component {
   render () {
     let event = this.props.event
     let styles = this.props.favoriteScreen ? favoriteStyles : normalStyles
+    let uri = this.props.event.picture || 'https://specials-images.forbesimg.com/imageserve/563858686/960x0.jpg?fit=scale'
     return (
-      <TouchableOpacity
+      <TouchableWithoutFeedback
         onPress={this.handleEventPress}
-        style={styles.row}
       >
-        {this.props.favoriteScreen && this.renderTime()}
-        <TouchableOpacity
-          style={[styles.likeContainer, { backgroundColor: this.props.like ? Colors.yellow : Colors.lightGrey }]}
-          onPress={this.onLikePress}
+        <View
+          style={styles.row}
         >
-          <Icon name='md-heart-outline'
-            size={Metrics.icons.medium}
-            color='black'
-            style={styles.likeIcon}
+          {this.props.favoriteScreen && this.renderTime()}
+          <TouchableOpacity
+            style={[styles.likeContainer, { backgroundColor: this.props.like ? Colors.yellow : Colors.lightGrey }]}
+            onPress={this.onLikePress}
+          >
+            <Icon name='md-heart-outline'
+              size={Metrics.icons.medium}
+              color='black'
+              style={styles.likeIcon}
+            />
+          </TouchableOpacity>
+          <Image
+            style={styles.image}
+            resizeMode={'cover'}
+            onLoadEnd={this.handleOnLoad}
+            source={{ uri }}
           />
-        </TouchableOpacity>
-        <Image
-          style={styles.image}
-          resizeMode={'cover'}
-          onLoadEnd={this.handleOnLoad}
-          source={{uri: 'https://specials-images.forbesimg.com/imageserve/563858686/960x0.jpg?fit=scale'}}
-        />
-        <Text style={styles.boldLabel}>{event.title && event.title.split(' - ')[0]}</Text>
-        <Text style={styles.underLabel}>США</Text>
-        <View style={styles.greyLine} />
-        <View style={styles.bottomContainer}>
-          <Text style={styles.dates}>{this.props.date}</Text>
-          <Text style={styles.price}>$100</Text>
+          <Text style={styles.boldLabel}>{event.title && event.title.split(' - ')[0]}</Text>
+          <Text style={styles.underLabel}>США</Text>
+          <View style={styles.greyLine} />
+          <View style={styles.bottomContainer}>
+            <Text style={styles.dates}>{this.props.date}</Text>
+            <Text style={styles.price}>$100</Text>
+          </View>
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     )
   }
 }
