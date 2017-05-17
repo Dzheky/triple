@@ -22,6 +22,28 @@ export default {
       data: "We've just sent you an email to reset your password."
     }
   },
+  getUserInfo: () => {
+    return {
+      ok: true,
+      data: {
+        user_id: '123',
+        user_metadata: {
+          favorites: [0, 1]
+        }
+      }
+    }
+  },
+  updateMetaData: () => {
+    return {
+      ok: true,
+      data: {
+        user_id: '123',
+        user_metadata: {
+          favorites: [0, 1]
+        }
+      }
+    }
+  },
   events: () => {
     return {
       ok: true,

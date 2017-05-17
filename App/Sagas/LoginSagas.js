@@ -22,7 +22,7 @@ export function * login (api, {username, password}) {
         yield put(EventsActions.setLikes(userMetaData.favorites))
       }
       yield put(LoginActions.loginSuccess(token, username, tokenId, userId, userMetaData))
-      yield Actions.tabbar({ type: ActionConst.RESET })
+      Actions.tabbar({ type: ActionConst.RESET })
       yield put(ErrorMessagesActions.showMessage('Вы вошли как ' + username))
     } else {
       let message = response.data.error_description === 'Wrong email or password.' ? 'Неправильный email или пароль!' : 'Что-то пошло не так!'

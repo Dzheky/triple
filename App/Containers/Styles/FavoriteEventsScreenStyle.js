@@ -32,7 +32,7 @@ export default StyleSheet.create({
   },
   searchIcon: {
     alignSelf: 'center',
-    color: Colors.yellow,
+    color: Colors.coal,
     backgroundColor: Colors.transparent
   },
   iconText: {
@@ -41,7 +41,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.h5,
     fontWeight: 'bold',
-    color: Colors.yellow
+    color: Colors.coal
   },
   greyLine: {
     height: 1,
@@ -81,7 +81,7 @@ export default StyleSheet.create({
     height: Metrics.screenHeight - Metrics.navBarHeight - Metrics.bottomNavigation,
     position: 'absolute',
     zIndex: 100,
-    backgroundColor: Colors.snow,
+    backgroundColor: Colors.yellow,
     justifyContent: 'center',
     alignItems: 'center'
   }

@@ -14,6 +14,7 @@ import EventsScreen from '../Containers/EventsScreen'
 import PointSearch from '../Containers/PointSearchScreen'
 import TopDancers from '../Containers/TopDancersScreen'
 import Profile from '../Containers/ProfileScreen'
+import EventInfo from '../Containers/EventInfoScreen'
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
 ***************************/
@@ -66,9 +67,11 @@ class NavigationRouter extends Component {
               </Scene>
               <Scene initial key='Events' title='Ивенты' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='EventsScreen' component={EventsScreen} hideNavBar={false} />
+                <Scene key='EventInfo' component={EventInfo} title='Описание' hideNavBar={false} />
               </Scene>
               <Scene key='Favorite' title='Избранное' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='FavoriteScreen' component={FavoriteEvents} hideNavBar={false} />
+                <Scene key='FavoriteEventInfo' component={EventInfo} title='Описание' hideNavBar={false} />
               </Scene>
               <Scene key='TopDancers' title='Проффи' icon={TabIcon} navBar={CustomNavBar}>
                 <Scene key='TopDancersScreen' component={TopDancers} hideNavBar={false} />

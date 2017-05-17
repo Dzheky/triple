@@ -153,9 +153,8 @@ class EventsScreen extends React.Component {
           </View>
         </View>
       )
-    } else {
-      return null
     }
+    return <View pointerEvents={'none'} />
   }
 
   render () {

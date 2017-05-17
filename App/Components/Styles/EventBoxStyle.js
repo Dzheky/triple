@@ -60,6 +60,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Fonts.size.h6,
     color: Colors.yellow,
+    backgroundColor: Colors.coal
   },
   likeContainer: {
     position: 'absolute',

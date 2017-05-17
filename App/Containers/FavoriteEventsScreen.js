@@ -41,9 +41,6 @@ class EventsScreen extends React.Component {
     this.props.fetchingDone()
   }
 
-  componentDidMount () {
-    this.props.getEvents()
-  }
   /* ***********************************************************
   * `renderRow` function -How each cell/row should be rendered
   * It's our best practice to place a single component here:
@@ -145,9 +142,8 @@ class EventsScreen extends React.Component {
           </View>
         </View>
       )
-    } else {
-      return null
     }
+    return <View pointerEvents={'none'} />
   }
 
   render () {

@@ -4,6 +4,7 @@ import styles from './Styles/NavItemsStyles'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/EvilIcons'
 import Icon2 from 'react-native-vector-icons/Ionicons'
+import Icon3 from 'react-native-vector-icons/SimpleLineIcons'
 import { Colors, Metrics } from '../Themes'
 
 const openDrawer = () => {
@@ -17,8 +18,8 @@ export default {
   backButton () {
     return (
       <TouchableOpacity onPress={NavigationActions.pop}>
-        <Icon name='angle-left'
-          size={Metrics.icons.large}
+        <Icon3 name='arrow-left'
+          size={Metrics.icons.small}
           color={Colors.snow}
           style={styles.backButton}
         />

@@ -4,6 +4,7 @@ import normalStyles from './Styles/EventBoxStyle'
 import favoriteStyles from './Styles/EventBoxFavoriteStyle'
 import EventActions from '../Redux/EventsRedux'
 import { connect } from 'react-redux'
+import { Actions, ActionConst } from 'react-native-router-flux'
 import { Colors, Metrics } from '../Themes/'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -27,9 +28,9 @@ class NumSet extends React.Component {
       numberString = '0' + numberString
     }
     numberString = numberString.toString()
-    return numberString.split('').map((element) => {
+    return numberString.split('').map((element, id) => {
       return (
-        <Num number={element} />
+        <Num number={element} key={'NumSet' + id}/>
       )
     })
   }
@@ -66,6 +67,15 @@ class EventBox extends React.Component {
     clearInterval(this.interval)
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps !== this.props) {
+      clearInterval(this.interval)
+      this.interval = setInterval(() => {
+        this.getDifference(this.props.event.start)
+      }, 1000)
+    }
+  }
+
   onLikePress = () => {
     if (this.props.like) {
       this.props.iDislike(this.props.idNumber, this.props.tokenId, this.props.userId, this.props.token)
@@ -83,7 +93,7 @@ class EventBox extends React.Component {
     let second = new Date()
     let seconds = parseInt((first - second) / 1000 % 60)
     let minutes = parseInt((first - second) / 1000 / 60 % 60)
-    let hours = parseInt((first - second) / 1000 / 60 / 60 % 24)
+    let hours = parseInt((((first - second) / 1000 / 60 / 60) - 2) % 24)
     let days = parseInt((first - second) / 1000 / 60 / 60 / 24)
     if(seconds < 0) {
       clearInterval(this.interval)
@@ -118,11 +128,18 @@ class EventBox extends React.Component {
     )
   }
 
+  handleEventPress = () => {
+    this.props.favoriteScreen ? Actions.FavoriteEventInfo({ event: this.props.event }) : Actions.EventInfo({ event: this.props.event })
+  }
+
   render () {
     let event = this.props.event
     let styles = this.props.favoriteScreen ? favoriteStyles : normalStyles
     return (
-      <View style={styles.row}>
+      <TouchableOpacity
+        onPress={this.handleEventPress}
+        style={styles.row}
+      >
         {this.props.favoriteScreen && this.renderTime()}
         <TouchableOpacity
           style={[styles.likeContainer, { backgroundColor: this.props.like ? Colors.yellow : Colors.lightGrey }]}
@@ -147,7 +164,7 @@ class EventBox extends React.Component {
           <Text style={styles.dates}>{this.props.date}</Text>
           <Text style={styles.price}>$100</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
