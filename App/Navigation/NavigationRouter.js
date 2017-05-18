@@ -66,7 +66,7 @@ class NavigationRouter extends Component {
                 <Scene key='RangScreen' component={PointSearch} hideNavBar={false} />
               </Scene>
               <Scene initial key='Events' title='Ивенты' icon={TabIcon} navBar={CustomNavBar}>
-                <Scene key='EventsScreen' component={EventsScreen} hideNavBar={false} />
+                <Scene key='EventsScreen' component={EventsScreen} hideNavBar={false} rightButton />
                 <Scene key='EventInfo' component={EventInfo} title='Описание' hideNavBar={false} />
               </Scene>
               <Scene key='Favorite' title='Избранное' icon={TabIcon} navBar={CustomNavBar}>

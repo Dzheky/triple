@@ -47,7 +47,7 @@ class CustomNavBar extends React.Component {
     } else {
       return (
         <View style={styles.rightButtons}>
-          {NavItems.searchButton(this.showSearchBar)}
+          {this.props.rightButton ? NavItems.searchButton(this.showSearchBar) : <View />}
         </View>
       )
     }

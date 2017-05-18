@@ -113,7 +113,7 @@ class EventsScreen extends React.Component {
   *************************************************************/
   componentWillReceiveProps (newProps) {
     if (newProps.events) {
-      let events = this.filter(newProps.results || newProps.events, newProps.likes)
+      let events = this.filter(newProps.events, newProps.likes)
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(events)
       })

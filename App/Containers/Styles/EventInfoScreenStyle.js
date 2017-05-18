@@ -17,7 +17,7 @@ export default StyleSheet.create({
     top: Metrics.baseMargin,
     width: Metrics.screenWidth - Metrics.baseMargin * 2,
     height: 150,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     position: 'absolute',
     zIndex: 99
   },
@@ -69,8 +69,7 @@ export default StyleSheet.create({
     height: 27
   },
   icons: {
-    color: 'black',
-    marginRight: Metrics.baseMargin,
+    marginRight: Metrics.baseMargin
   },
   buttons: {
     marginTop: Metrics.baseMargin,

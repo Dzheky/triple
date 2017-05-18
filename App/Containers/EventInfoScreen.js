@@ -53,17 +53,42 @@ class EventInfo extends React.Component {
     }
   }
 
-  handleSitePress = () => {
-    let url = this.props.event.url
+  handleSitePress = (url) => {
     Linking.openURL(url).catch(err => console.error('An error occurred', err));
+  }
+
+  renderButton = (url, text) => {
+    return (
+      <View style={styles.buttons}>
+        <WideButton
+          fontStyle={styles.buttonFont}
+          style={styles.transparentButton}
+          text={text}
+          onPress={this.handleSitePress.bind(this, url)}
+        />
+      </View>
+    )
   }
 
   render () {
     let event = this.props.event
     let uri = this.props.event.picture || 'https://specials-images.forbesimg.com/imageserve/563858686/960x0.jpg?fit=scale'
     let date = `${parseInt(event.start.split('-')[2])} ${this.getMonth(event.start.split('-')[1])}`
-    let range = parseInt(event.end.split('-')[2]) - parseInt(event.start.split('-')[2])
+    let range = new Date(event.end) - new Date(event.start)
+    range = parseInt(range / 1000 / 60 / 60 / 24) + 1
     let rangeText = range === 1 ? `1 день` : range <= 4 ? `${range} дня` : `${range} дней`
+    let registryText = {
+      registry: true,
+      title: 'Рейтинговый ивент',
+      description: 'Начисляются очки по классификации WSDC'
+    }
+    if(event.title.includes('Non-Registry')) {
+      registryText = {
+        registry: false,
+        title: 'Не рейтинговый ивент',
+        description: 'Очки по классификации WSDC НЕ начисляются'
+      }
+    }
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
@@ -111,9 +136,18 @@ class EventInfo extends React.Component {
                 <Timer start={this.props.event.start} />
               </View>
             </View>
-            <View style={styles.buttons}>
-              <WideButton fontStyle={styles.buttonFont} style={styles.transparentButton} text={'САЙТ'} onPress={this.handleSitePress} />
+            <View style={styles.whenContainer}>
+              <Icon2 name='badge'
+                size={Metrics.icons.medium}
+                color={'black'}
+                style={styles.icons}
+              />
+              <View style={styles.whenTextContainer}>
+                <Text style={[styles.whenTextTitle, !registryText.registry ? { color: 'red' } : {} ]}>{registryText.title}</Text>
+                <Text style={styles.whenText}>{registryText.description}</Text>
+              </View>
             </View>
+            {this.renderButton(this.props.event.url, 'САЙТ')}
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
