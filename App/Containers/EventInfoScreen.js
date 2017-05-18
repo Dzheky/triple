@@ -15,6 +15,9 @@ import WideButton from '../Components/WideButton'
 import styles from './Styles/EventInfoScreenStyle'
 
 class EventInfo extends React.Component {
+  state = {
+    like: this.props.event.like
+  }
 
   getMonth = (month) => {
       switch (month) {
@@ -46,10 +49,16 @@ class EventInfo extends React.Component {
   }
 
   onLikePress = () => {
-    if (this.props.event.like) {
+    if (this.state.like) {
       this.props.iDislike(this.props.event.id, this.props.tokenId, this.props.userId, this.props.token)
+      this.setState({
+        like: false
+      })
     } else {
       this.props.iLike(this.props.event.id, this.props.tokenId, this.props.userId, this.props.token)
+      this.setState({
+        like: true
+      })
     }
   }
 
@@ -99,7 +108,7 @@ class EventInfo extends React.Component {
               <Text style={styles.boldLabel}>{event.title && event.title.split(' - ')[0]}</Text>
             </View>
             <TouchableOpacity
-              style={[styles.likeContainer, { backgroundColor: this.props.event.like ? Colors.yellow : Colors.lightGrey }]}
+              style={[styles.likeContainer, { backgroundColor: this.state.like ? Colors.yellow : Colors.lightGrey }]}
               onPress={this.onLikePress}
             >
               <Icon name='md-heart-outline'
