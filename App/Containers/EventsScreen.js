@@ -50,7 +50,12 @@ class EventsScreen extends React.Component {
   }
 
   componentDidMount () {
-    this.props.getEvents()
+    if(!this.props.event || this.props.event.length !== 0) {
+      this.props.getEvents()
+      if(this.props.results && this.props.results.length === 0) {
+        this.props.fetchingDone()
+      }
+    }
   }
   /* ***********************************************************
   * `renderRow` function -How each cell/row should be rendered
@@ -125,8 +130,14 @@ class EventsScreen extends React.Component {
   *************************************************************/
   componentWillReceiveProps (newProps) {
     if (newProps.events) {
+      let events = newProps.events
+      if(newProps.results) {
+        events = newProps.events.filter((event) => {
+          return newProps.results.indexOf(event.id) !== -1
+        })
+      }
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newProps.results || newProps.events)
+        dataSource: this.state.dataSource.cloneWithRows(events)
       })
     }
   }

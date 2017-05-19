@@ -79,6 +79,56 @@ class EventInfo extends React.Component {
     )
   }
 
+  renderPrice(price) {
+    if(price.length === 1) {
+      return (
+        <View style={styles.whenContainer}>
+          <Icon2 name='wallet'
+            size={Metrics.icons.medium}
+            color='black'
+            style={styles.icons}
+          />
+          <View style={styles.timerContainer}>
+            <Text style={styles.whenTextTitle}>{`Цена`}</Text>
+            <Text style={styles.whenText}>{`Цена указана в валюте страны`}</Text>
+            <Text style={styles.price}>{price[0].price}</Text>
+          </View>
+        </View>
+      )
+    } else if(price.length > 1) {
+      return (
+        <View style={styles.whenContainer}>
+          <Icon2 name='wallet'
+            size={Metrics.icons.medium}
+            color='black'
+            style={styles.icons}
+          />
+          <View style={styles.timerContainer}>
+            <Text style={styles.whenTextTitle}>{`Цена`}</Text>
+            <Text style={styles.whenText}>{`Цена указана в валюте страны`}</Text>
+            <View style={styles.pricesContainer}>
+              {price.map((price, id) => {
+                let valid = true
+                if(price.until) {
+                  let today = new Date()
+                  let date = new Date(price.until)
+                  valid = date > today
+                }
+                let title = price.until ? `До ${parseInt(price.until.split('-')[2])} ${this.getMonth(price.until.split('-')[1])}` : 'До ивента'
+                return (
+                  <View style={styles.priceContainer} key={`${id}_price`}>
+                    <Text style={[styles.priceUntilDate, !valid && { color: Colors.grey }]}>{title}</Text>
+                    <Text style={[styles.price, !valid && { color: Colors.grey, textDecorationLine: 'line-through' }]}>{price.price}</Text>
+                  </View>
+                )
+              })}
+            </View>
+          </View>
+        </View>
+      )
+    }
+  }
+
   render () {
     let event = this.props.event
     let uri = this.props.event.picture || 'https://specials-images.forbesimg.com/imageserve/563858686/960x0.jpg?fit=scale'
@@ -142,6 +192,7 @@ class EventInfo extends React.Component {
               />
               <View style={styles.timerContainer}>
                 <Text style={styles.whenTextTitle}>{`До начала`}</Text>
+                <Text style={styles.whenText}>{`Таймер установлен до 24:00, ${date}`}</Text>
                 <Timer start={this.props.event.start} />
               </View>
             </View>
@@ -156,6 +207,7 @@ class EventInfo extends React.Component {
                 <Text style={styles.whenText}>{registryText.description}</Text>
               </View>
             </View>
+            {this.props.event.prices && this.renderPrice(this.props.event.prices)}
             {this.renderButton(this.props.event.url, 'САЙТ')}
           </View>
         </KeyboardAvoidingView>

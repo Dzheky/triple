@@ -22,7 +22,8 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 export const performSearch = (state, { searchTerm, events }) => {
-  const results = events.filter((event) => event.title.toUpperCase().includes(searchTerm.toUpperCase()))
+  const found = events.filter((event) => event.title.toUpperCase().includes(searchTerm.toUpperCase()))
+  const results = found.map((event) => event.id)
   return state.merge({ searching: true, searchTerm, results })
 }
 

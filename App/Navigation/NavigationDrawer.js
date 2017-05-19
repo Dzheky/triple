@@ -23,8 +23,8 @@ class NavigationDrawer extends Component {
         content={<DrawerContent />}
         styles={Styles}
         tapToClose
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
+        openDrawerOffset={0.0}
+        panCloseMask={0.0}
         negotiatePan
         tweenHandler={(ratio) => ({
           main: { opacity: Math.max(0.54, 1 - ratio) }

@@ -11,7 +11,7 @@ class CustomNavBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      showSearchBar: false
+      showSearchBar: this.props.searchTerm !== '' && this.props.rightButton
     }
   }
 

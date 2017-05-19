@@ -5,9 +5,10 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    marginTop: Metrics.navBarHeight - 4,
-    paddingBottom: Metrics.bottomNavigation,
-    backgroundColor: Colors.background
+    marginTop: Metrics.navBarHeight - 10,
+    marginBottom: Metrics.bottomNavigation,
+    backgroundColor: Colors.background,
+    paddingTop: Metrics.smallMargin
   },
   timeContainer: {
     flexDirection: 'row',
@@ -98,5 +99,22 @@ export default StyleSheet.create({
     marginBottom: Metrics.baseMargin,
     width: Metrics.screenWidth - Metrics.baseMargin * 2,
     height: 150
+  },
+  price: {
+    color: Colors.coal,
+    fontWeight: 'bold',
+    fontSize: Fonts.size.regular
+  },
+  priceUntilDate: {
+    fontWeight: '100',
+    fontSize: Fonts.size.tiny
+  },
+  pricesContainer: {
+    flexDirection: 'row'
+  },
+  priceContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: Metrics.smallMargin
   }
 })

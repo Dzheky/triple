@@ -4,8 +4,6 @@ import { Metrics, Colors, Fonts } from '../../Themes/'
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     zIndex: 99
   },
   dots: {
@@ -44,6 +42,7 @@ export default StyleSheet.create({
   number: {
     fontWeight: 'bold',
     fontSize: Fonts.size.h6,
+    backgroundColor: Colors.coal,
     color: Colors.yellow,
   }
 })

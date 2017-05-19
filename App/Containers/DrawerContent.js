@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { ScrollView, Image, BackAndroid } from 'react-native'
+import { Text, Image, BackAndroid, TouchableOpacity, View } from 'react-native'
 import styles from './Styles/DrawerContentStyles'
+import Icon from 'react-native-vector-icons/EvilIcons'
+import { Actions as NavigationActions } from 'react-native-router-flux'
+import { Colors, Metrics } from '../Themes/'
 import { Images } from '../Themes'
 
 class DrawerContent extends Component {
@@ -16,14 +19,27 @@ class DrawerContent extends Component {
   }
 
   toggleDrawer () {
-    this.context.drawer.toggle()
+    NavigationActions.refresh({
+      key: 'drawer',
+      open: false
+    })
   }
 
   render () {
     return (
-      <ScrollView style={styles.container}>
-        <Image source={Images.logo} style={styles.logo} />
-      </ScrollView>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.closeContainer}
+          onPress={this.toggleDrawer}
+        >
+          <Icon name='close'
+            size={Metrics.icons.medium}
+            color={Colors.grey}
+            style={styles.icons}
+          />
+        </TouchableOpacity>
+        <Text style={styles.comingSoonText}>{'Скоро...'}</Text>
+      </View>
     )
   }
 
