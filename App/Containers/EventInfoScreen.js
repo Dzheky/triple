@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView, Text, KeyboardAvoidingView, View, Image, TouchableOpacity, Linking } from 'react-native'
 import EventActions from '../Redux/EventsRedux'
 import { connect } from 'react-redux'
+import Library from '../Lib/Library'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/SimpleLineIcons'
 import { Colors, Metrics } from '../Themes/'
@@ -17,35 +18,6 @@ import styles from './Styles/EventInfoScreenStyle'
 class EventInfo extends React.Component {
   state = {
     like: this.props.event.like
-  }
-
-  getMonth = (month) => {
-      switch (month) {
-        case '01':
-          return 'Января'
-        case '02':
-          return 'Февраля'
-        case '03':
-          return 'Марта'
-        case '04':
-          return 'Апреля'
-        case '05':
-          return 'Мая'
-        case '06':
-          return 'Июня'
-        case '07':
-          return 'Июля'
-        case '08':
-          return 'Августа'
-        case '09':
-          return 'Сентября'
-        case '10':
-          return 'Октября'
-        case '11':
-          return 'Ноября'
-        default:
-          return 'Декабря'
-      }
   }
 
   onLikePress = () => {
@@ -114,7 +86,7 @@ class EventInfo extends React.Component {
                   let date = new Date(price.until)
                   valid = date > today
                 }
-                let title = price.until ? `До ${parseInt(price.until.split('-')[2])} ${this.getMonth(price.until.split('-')[1])}` : 'До ивента'
+                let title = price.until ? `До ${parseInt(price.until.split('-')[2])} ${Library.getMonth(price.until.split('-')[1])}` : 'До ивента'
                 return (
                   <View style={styles.priceContainer} key={`${id}_price`}>
                     <Text style={[styles.priceUntilDate, !valid && { color: Colors.grey }]}>{title}</Text>
@@ -132,7 +104,7 @@ class EventInfo extends React.Component {
   render () {
     let event = this.props.event
     let uri = this.props.event.picture || 'https://specials-images.forbesimg.com/imageserve/563858686/960x0.jpg?fit=scale'
-    let date = `${parseInt(event.start.split('-')[2])} ${this.getMonth(event.start.split('-')[1])}`
+    let date = `${parseInt(event.start.split('-')[2])} ${Library.getMonth(event.start.split('-')[1])}`
     let range = new Date(event.end) - new Date(event.start)
     range = parseInt(range / 1000 / 60 / 60 / 24) + 1
     let rangeText = range === 1 ? `1 день` : range <= 4 ? `${range} дня` : `${range} дней`
